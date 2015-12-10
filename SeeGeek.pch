@@ -1,0 +1,37 @@
+//
+//  SeeGeek.pch
+//  SeeGeek
+//
+//  Created by 余晨正Alex on 15/12/1.
+//  Copyright © 2015年 SeeGeek. All rights reserved.
+//
+
+#ifndef SeeGeek_pch
+#define SeeGeek_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#define WS(weakSelf)  __weak __typeof(&*self)weakSelf = self
+
+#pragma mark - LOG
+#import <CocoaLumberjack.h>
+static const DDLogLevel ddLogLevel = DDLogLevelDebug;
+
+#pragma mark - 业务
+typedef NS_ENUM(NSInteger, SGThirdPartType) {
+    // 分享类型
+    SGThirdPartTypeNone,
+    SGThirdPartTypeShareQZone,
+    SGThirdPartTypeShareQQMessage,
+    SGThirdPartTypeShareWechatTimeline,
+    SGThirdPartTypeShareWechatMessage,
+    SGThirdPartTypeShareSina,
+
+    // 登录类型
+    SGThirdPartTypeLoginQQ,
+    SGThirdPartTypeLoginWechat,
+    SGThirdPartTypeLoginSina,
+};
+
+#endif /* SeeGeek_pch */
