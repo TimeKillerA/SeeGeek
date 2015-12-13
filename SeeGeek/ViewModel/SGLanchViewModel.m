@@ -8,16 +8,66 @@
 
 #import "SGLanchViewModel.h"
 #import "SGAPIHelper.h"
+#import "ParameterUtil.h"
+#import "SGHomeViewModel.h"
+#import "SGViewControllerDispatcher.h"
+
+@interface SGLanchViewModel ()
+
+@property (nonatomic, assign)BOOL firstLaunch;
+
+@end
 
 @implementation SGLanchViewModel
 
+- (instancetype)init {
+    self = [super init];
+    if(self) {
+        [self setup];
+    }
+    return self;
+}
+
+#pragma mark - private method
+- (void)setup {
+    [self setupFirstLaunch];
+}
+
+- (void)setupFirstLaunch {
+//    NSString *version = [ParameterUtil appVersion];
+//    if(![[NSUserDefaults standardUserDefaults] objectForKey:version])
+//    {
+//        _firstLaunch = YES;
+//        [[NSUserDefaults standardUserDefaults] setValue:version forKey:version];
+//        [[NSUserDefaults standardUserDefaults] synchronize];
+//    }
+//    else
+//    {
+//        _firstLaunch = NO;
+//    }
+    _firstLaunch = NO;
+}
+
+- (void)dispatchToHomePage {
+    SGHomeViewModel *viewModel = [[SGHomeViewModel alloc] init];
+    [SGViewControllerDispatcher dispatchToViewControllerWithViewControllerDispatcherDataSource:viewModel];
+}
+
+- (void)dispatchToGuidePage {
+
+}
+
 #pragma mark - SGLaunchViewModelProtocol
 - (BOOL)isFirstLaunchForThisVersion {
-    return YES;
+    return self.firstLaunch;
 }
 
 - (void)dispatchToNextPage {
-
+    if(self.isFirstLaunchForThisVersion) {
+        [self dispatchToGuidePage];
+    } else {
+        [self dispatchToHomePage];
+    }
 }
 
 #pragma mark - SGNetworkRequestProtocol

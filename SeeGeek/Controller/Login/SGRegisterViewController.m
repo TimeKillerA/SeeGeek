@@ -12,19 +12,19 @@
 #import "SGTextField.h"
 #import "SGRegisterViewModelDelegate.h"
 
-CGFloat const REGISTER_BUTTON_MARGIN_BOTTOM         = 128;
-CGFloat const LOGO_IMAGE_MARGIN_TOP                 = 80;
-CGFloat const LOGO_IMAGE_WIDTH                      = 100;
-CGFloat const LOGO_IMAGE_HEIGHT                     = 100;
-CGFloat const ACCOUNT_MARGIN_TOP                    = 85;
-CGFloat const TEXTFIELD_HEIGHT                      = 40;
-CGFloat const TEXTFIELD_MARGIN_LEFT_AND_RIGHT       = 35;
-CGFloat const REGISTER_BUTTON_MARGIN_TOP            = 45;
-CGFloat const REGISTER_BUTTON_MARGIN_LEFT_AND_RIGHT = 90;
-CGFloat const REGISTER_BUTTON_HEIGHT                = 40;
-CGFloat const VERIFY_CODE_FILED_WIDTH               = 100;
-CGFloat const SEND_VERIFY_CODE_BUTTON_WIDTH         = 130;
-CGFloat const SEND_VERIFY_CODE_BUTTON_HEIGHT        = 30;
+static CGFloat const REGISTER_BUTTON_MARGIN_BOTTOM         = 128;
+static CGFloat const LOGO_IMAGE_MARGIN_TOP                 = 80;
+static CGFloat const LOGO_IMAGE_WIDTH                      = 100;
+static CGFloat const LOGO_IMAGE_HEIGHT                     = 100;
+static CGFloat const ACCOUNT_MARGIN_TOP                    = 85;
+static CGFloat const TEXTFIELD_HEIGHT                      = 40;
+static CGFloat const TEXTFIELD_MARGIN_LEFT_AND_RIGHT       = 35;
+static CGFloat const REGISTER_BUTTON_MARGIN_TOP            = 45;
+static CGFloat const REGISTER_BUTTON_MARGIN_LEFT_AND_RIGHT = 90;
+static CGFloat const REGISTER_BUTTON_HEIGHT                = 40;
+static CGFloat const VERIFY_CODE_FILED_WIDTH               = 100;
+static CGFloat const SEND_VERIFY_CODE_BUTTON_WIDTH         = 130;
+static CGFloat const SEND_VERIFY_CODE_BUTTON_HEIGHT        = 30;
 
 @interface SGRegisterViewController ()<SGViewControllerDelegate>
 
@@ -154,7 +154,6 @@ CGFloat const SEND_VERIFY_CODE_BUTTON_HEIGHT        = 30;
 - (UIScrollView *)scrollView {
     if(!_scrollView) {
         _scrollView = [[UIScrollView alloc] init];
-        _scrollView.backgroundColor = [UIColor colorForKey:COLOR_VIEW_CONTROLLER_BACKGROUND];
     }
     return _scrollView;
 }
@@ -169,7 +168,6 @@ CGFloat const SEND_VERIFY_CODE_BUTTON_HEIGHT        = 30;
 - (UIImageView *)backgroundView {
     if(!_backgroundView) {
         _backgroundView = [[UIImageView alloc] init];
-        _backgroundView.image = [UIImage imageForKey:IMAGE_LOGIN_BACKGROUND];
         _backgroundView.contentMode = UIViewContentModeScaleAspectFill;
     }
     return _backgroundView;
@@ -178,7 +176,6 @@ CGFloat const SEND_VERIFY_CODE_BUTTON_HEIGHT        = 30;
 - (UIImageView *)logoImageView {
     if(!_logoImageView) {
         _logoImageView = [[UIImageView alloc] init];
-        _logoImageView.image = [UIImage imageForKey:IMAGE_LOGO];
     }
     return _logoImageView;
 }

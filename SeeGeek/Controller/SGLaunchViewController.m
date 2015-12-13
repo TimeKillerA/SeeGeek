@@ -177,7 +177,7 @@ OBJC_ASSOCIATED(startButton,        setStartButton)
     [super viewDidLoad];
     [self loadAdData];
     [self dispatchToNextPageAfter:DEFAULT_DISPATCH_TIME_TO_NEXT];
-    [self initProperties];
+//    [self initProperties];
 }
 
 - (void)didReceiveMemoryWarning {

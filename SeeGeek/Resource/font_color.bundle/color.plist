@@ -2,7 +2,15 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>tab_select</key>
+	<string>#ec9f25</string>
+	<key>tab</key>
+	<string>#ffffff</string>
+	<key>navigation</key>
+	<string>#ec9f25</string>
+	<key>black</key>
+	<string>#000000</string>
 	<key>white</key>
-	<string>0xffffff</string>
+	<string>#ffffff</string>
 </dict>
 </plist>

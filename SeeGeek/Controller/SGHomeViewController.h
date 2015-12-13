@@ -6,8 +6,8 @@
 //  Copyright © 2015年 SeeGeek. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <RDVTabBarController.h>
 
-@interface SGHomeViewController : UIViewController
+@interface SGHomeViewController : RDVTabBarController
 
 @end

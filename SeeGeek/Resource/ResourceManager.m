@@ -75,3 +75,10 @@
 }
 
 @end
+
+NSString *const SG_FONT_SIZE_KEY   = @"size";
+NSString *const SG_FONT_NAME_KEY   = @"name";
+NSString *const SG_FONT_STYLE_KEY  = @"style";
+NSString *const SG_FONT_COLOR_KEY  = @"color";
+NSString *const SG_COLOR_KEY       = @"color";
+NSString *const SG_FONT_STYLE_BOLD = @"bold";

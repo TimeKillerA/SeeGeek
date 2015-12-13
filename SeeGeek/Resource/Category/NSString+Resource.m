@@ -15,3 +15,10 @@
 }
 
 @end
+
+
+NSString *const SG_TEXT_HOME = @"首页";
+NSString *const SG_TEXT_LOCATION = @"位置";
+NSString *const SG_TEXT_RECORD = @"录制";
+NSString *const SG_TEXT_FIND = @"发现";
+NSString *const SG_TEXT_ME = @"我";

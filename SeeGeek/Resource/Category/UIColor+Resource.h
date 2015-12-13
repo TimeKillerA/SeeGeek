@@ -8,20 +8,29 @@
 
 #import <UIKit/UIKit.h>
 
+
+
 @interface UIColor (Resource)
 
 + (instancetype)colorForKey:(NSString *)key;
 + (instancetype)colorForFontKey:(NSString *)key;
 
 /**
- *  返回rgba描述的颜色值
+ *  返回argb描述的颜色值
  *
  *  @param argb 形式如下：
- *  1.0xfff, 2.0xffffff, 3.0xff,0xff,0xff, 4.255,255,255
- *  5.0xffffffff, 6.0xff,0xff,0xff,0xff, 5.255,255,255,255
+ *  1.#ffffffff, 2.255,255,255,255
  *
+ *  若数值部分只有6位，则认为无透明度
+ *  若数值部分只有3位或4位，则补齐至6位或8位  #333-》#333333
  *  @return
  */
-+ (instancetype)colorForARGB:(NSString *)rgba;
++ (instancetype)colorForARGB:(NSString *)argb;
 
 @end
+
+FOUNDATION_EXTERN NSString *const SG_COLOR_WHITE;
+FOUNDATION_EXTERN NSString *const SG_COLOR_BLACK;
+FOUNDATION_EXTERN NSString *const SG_COLOR_NAVIGATION;
+FOUNDATION_EXTERN NSString *const SG_COLOR_TAB;
+FOUNDATION_EXTERN NSString *const SG_COLOR_TAB_SELECT;

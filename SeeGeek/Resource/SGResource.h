@@ -14,23 +14,10 @@
 #import "UIColor+Resource.h"
 #import "NSString+Resource.h"
 
-#pragma mark - Size
-
-#pragma mark - Font
-
-#pragma mark - Color
-#define COLOR_VIEW_CONTROLLER_BACKGROUND @""
-
-#pragma mark - Image
-#define IMAGE_LOGIN_BACKGROUND @""
-#define IMAGE_LOGO @""
-#define IMAGE_QQ @""
-#define IMAGE_WECHAT @""
-#define IMAGE_SINA @""
-
-#pragma mark - Text
-#define TEXT_LOGIN_WITH_QQ @""
-#define TEXT_LOGIN_WITH_WECHAT @""
-#define TEXT_LOGIN_WIDTH_SINA @""
+#define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
+#define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
+#define NAVIGATION_BAR_HEIGHT 64
+#define TAB_BAR_HEIGHT 49
+#define SCREEN_SCALE ([UIScreen mainScreen].bounds.size.width/320.0)
 
 #endif /* SGResource_h */

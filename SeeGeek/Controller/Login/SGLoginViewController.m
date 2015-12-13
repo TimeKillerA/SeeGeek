@@ -14,20 +14,20 @@
 #import "../../Resource/SGResource.h"
 #import "UIViewController+HUD.h"
 
-CGFloat const WECHAT_BUTTON_MARGIN_BOTTOM        = 70;
-CGFloat const LOGO_IMAGE_MARGIN_TOP              = 80;
-CGFloat const LOGO_IMAGE_WIDTH                   = 100;
-CGFloat const LOGO_IMAGE_HEIGHT                  = 100;
-CGFloat const ACCOUNT_MARGIN_TOP                 = 85;
-CGFloat const TEXTFIELD_HEIGHT                   = 40;
-CGFloat const TEXTFIELD_MARGIN_LEFT_AND_RIGHT    = 35;
-CGFloat const LOGIN_BUTTON_MARGIN_TOP            = 45;
-CGFloat const LOGIN_BUTTON_MARGIN_LEFT_AND_RIGHT = 90;
-CGFloat const LOGIN_BUTTON_HEIGHT                = 40;
-CGFloat const REGISTER_BUTTON_MARGIN_TOP         = 15;
-CGFloat const QQ_BUTTON_MARGIN_LEFT              = 65;
-CGFloat const SINA_BUTTON_MARGIN_RIGHT           = 65;
-CGFloat const QQ_BUTTON_MARGIN_TOP               = 25;
+static CGFloat const WECHAT_BUTTON_MARGIN_BOTTOM        = 70;
+static CGFloat const LOGO_IMAGE_MARGIN_TOP              = 80;
+static CGFloat const LOGO_IMAGE_WIDTH                   = 100;
+static CGFloat const LOGO_IMAGE_HEIGHT                  = 100;
+static CGFloat const ACCOUNT_MARGIN_TOP                 = 85;
+static CGFloat const TEXTFIELD_HEIGHT                   = 40;
+static CGFloat const TEXTFIELD_MARGIN_LEFT_AND_RIGHT    = 35;
+static CGFloat const LOGIN_BUTTON_MARGIN_TOP            = 45;
+static CGFloat const LOGIN_BUTTON_MARGIN_LEFT_AND_RIGHT = 90;
+static CGFloat const LOGIN_BUTTON_HEIGHT                = 40;
+static CGFloat const REGISTER_BUTTON_MARGIN_TOP         = 15;
+static CGFloat const QQ_BUTTON_MARGIN_LEFT              = 65;
+static CGFloat const SINA_BUTTON_MARGIN_RIGHT           = 65;
+static CGFloat const QQ_BUTTON_MARGIN_TOP               = 25;
 
 @interface SGLoginViewController ()<SGViewControllerDelegate>
 
@@ -198,7 +198,6 @@ CGFloat const QQ_BUTTON_MARGIN_TOP               = 25;
 - (UIScrollView *)scrollView {
     if(!_scrollView) {
         _scrollView = [[UIScrollView alloc] init];
-        _scrollView.backgroundColor = [UIColor colorForKey:COLOR_VIEW_CONTROLLER_BACKGROUND];
     }
     return _scrollView;
 }
@@ -213,7 +212,6 @@ CGFloat const QQ_BUTTON_MARGIN_TOP               = 25;
 - (UIImageView *)backgroundView {
     if(!_backgroundView) {
         _backgroundView = [[UIImageView alloc] init];
-        _backgroundView.image = [UIImage imageForKey:IMAGE_LOGIN_BACKGROUND];
         _backgroundView.contentMode = UIViewContentModeScaleAspectFill;
     }
     return _backgroundView;
@@ -222,7 +220,6 @@ CGFloat const QQ_BUTTON_MARGIN_TOP               = 25;
 - (UIImageView *)logoImageView {
     if(!_logoImageView) {
         _logoImageView = [[UIImageView alloc] init];
-        _logoImageView.image = [UIImage imageForKey:IMAGE_LOGO];
     }
     return _logoImageView;
 }
@@ -244,8 +241,6 @@ CGFloat const QQ_BUTTON_MARGIN_TOP               = 25;
 - (UIButton *)qqButton {
     if(!_qqButton) {
         _qqButton = [[UIButton alloc] init];
-        [_qqButton setImage:[UIImage imageForKey:IMAGE_QQ] forState:UIControlStateNormal];
-        [_qqButton setTitle:[NSString stringForKey:TEXT_LOGIN_WITH_QQ] forState:UIControlStateNormal];
     }
     return _qqButton;
 }
@@ -253,8 +248,6 @@ CGFloat const QQ_BUTTON_MARGIN_TOP               = 25;
 - (UIButton *)wechatButton {
     if(_wechatButton) {
         _wechatButton = [[UIButton alloc] init];
-        [_wechatButton setImage:[UIImage imageForKey:IMAGE_WECHAT] forState:UIControlStateNormal];
-        [_wechatButton setTitle:[NSString stringForKey:TEXT_LOGIN_WITH_WECHAT] forState:UIControlStateNormal];
     }
     return _wechatButton;
 }
@@ -262,8 +255,6 @@ CGFloat const QQ_BUTTON_MARGIN_TOP               = 25;
 - (UIButton *)sinaButton {
     if(_sinaButton) {
         _sinaButton = [[UIButton alloc] init];
-        [_sinaButton setImage:[UIImage imageForKey:IMAGE_SINA] forState:UIControlStateNormal];
-        [_sinaButton setTitle:[NSString stringForKey:TEXT_LOGIN_WIDTH_SINA] forState:UIControlStateNormal];
     }
     return _sinaButton;
 }
