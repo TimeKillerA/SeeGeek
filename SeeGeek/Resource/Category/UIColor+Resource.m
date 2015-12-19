@@ -94,3 +94,9 @@ NSString *const SG_COLOR_BLACK      = @"black";
 NSString *const SG_COLOR_NAVIGATION = @"navigation";
 NSString *const SG_COLOR_TAB        = @"tab";
 NSString *const SG_COLOR_TAB_SELECT = @"tab_select";
+NSString *const SG_COLOR_REFRESH_CELL_BG = @"refresh_cell_bg";
+NSString *const SG_COLOR_NORMAL_GRAY_BG = @"normal_gray_bg";
+
+
+
+

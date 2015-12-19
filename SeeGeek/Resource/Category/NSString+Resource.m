@@ -22,3 +22,16 @@ NSString *const SG_TEXT_LOCATION = @"位置";
 NSString *const SG_TEXT_RECORD = @"录制";
 NSString *const SG_TEXT_FIND = @"发现";
 NSString *const SG_TEXT_ME = @"我";
+NSString *const SG_TEXT_LIVE_EN = @"live";
+NSString *const SG_TEXT_PLAYBACK = @"回放";
+NSString *const SG_TEXT_EXPAND = @"展开";
+NSString *const SG_TEXT_UNEXPAND = @"收起";
+NSString *const SG_TEXT_EXCHANGE = @"换一换";
+NSString *const SG_TEXT_NO_NEW_CONTENT = @"没有新内容";
+NSString *const SG_TEXT_FOCUS_LOCATION = @"关注位置";
+
+
+
+
+
+

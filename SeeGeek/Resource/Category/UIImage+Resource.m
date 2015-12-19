@@ -32,6 +32,7 @@
 
 @end
 
+#pragma mark - tab
 NSString *const SG_IMAGE_TAB_HOME = @"tab_home";
 NSString *const SG_IMAGE_TAB_HOME_SELECT = @"tab_home_select";
 NSString *const SG_IMAGE_TAB_LOCATION = @"tab_location";
@@ -42,3 +43,30 @@ NSString *const SG_IMAGE_TAB_FIND = @"tab_find";
 NSString *const SG_IMAGE_TAB_FIND_SELECT = @"tab_find_select";
 NSString *const SG_IMAGE_TAB_ME = @"tab_me";
 NSString *const SG_IMAGE_TAB_ME_SELECT = @"tab_me_select";
+
+#pragma mark - stream cell
+NSString *const SG_IMAGE_RED_DOT = @"icon_red_dot";
+NSString *const SG_IMAGE_LIVE_SLIDE_BG = @"icon_live_stream_slide_bg";
+NSString *const SG_IMAGE_LIKE = @"icon_like_bg";
+NSString *const SG_IMAGE_COMMENT = @"icon_comment_bg";
+NSString *const SG_IMAGE_CLIP_SLIDE_BG = @"icon_clip_slide_bg";
+NSString *const SG_IMAGE_CLIP_DURATION_BG = @"icon_clip_duration_bg";
+NSString *const SG_IMAGE_STREAM_EMPTY_LOGO = @"icon_stream_snap_empty";
+NSString *const SG_IMAGE_WHITE_PLAY = @"icon_white_play";
+NSString *const SG_IMAGE_LOCATION = @"icon_location";
+NSString *const SG_IMAGE_EXPAND = @"icon_expand";
+NSString *const SG_IMAGE_UNEXPAND = @"icon_unexpand";
+NSString *const SG_IMAGE_ANNOTATION_CLIP = @"annotation_clip_bg";
+NSString *const SG_IMAGE_ANNOTATION_LIVE = @"annotation_live_bg";
+NSString *const SG_IMAGE_SEARCH = @"icon_search";
+
+
+
+
+
+
+
+
+
+
+

@@ -34,6 +34,24 @@ typedef NS_ENUM(NSInteger, SGThirdPartType) {
     SGThirdPartTypeLoginSina,
 };
 
+/**
+ *  视频类型
+ */
+typedef NS_ENUM(NSInteger, SGStreamType) {
+    /**
+     *  空
+     */
+    SGStreamTypeNone,
+    /**
+     *  直播
+     */
+    SGStreamTypeLive,
+    /**
+     *  点播
+     */
+    SGStreamTypeClip,
+};
+
 typedef unsigned long long SGIDInteger;
 
 #endif /* SeeGeek_pch */

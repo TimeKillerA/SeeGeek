@@ -9,6 +9,7 @@
 
 #import "SGHomeViewModel.h"
 #import "SGMainPageViewModel.h"
+#import "SGMainLocationViewModel.h"
 
 @interface SGHomeViewModel ()
 
@@ -39,8 +40,8 @@
     switch (index) {
         case 0:
             return [[SGMainPageViewModel alloc] init];
-            break;
-
+        case 1:
+            return [[SGMainLocationViewModel alloc] init];
         default:
             break;
     }

@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^SGRefreshCellBlock)();
-
 @interface SGRefreshCell : UITableViewCell
 
 @property (nonatomic, copy)NSString *title;

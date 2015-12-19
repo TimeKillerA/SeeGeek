@@ -16,6 +16,7 @@
 #import "SGMainRecordViewController.h"
 #import "SGMainFindViewController.h"
 #import "SGMainUserViewController.h"
+#import "SGResource.h"
 
 @interface SGHomeViewController ()<SGViewControllerDelegate>
 
@@ -51,6 +52,7 @@
 
 - (void)setupTabbar {
     self.tabBar.translucent = YES;
+    [self.tabBar setHeight:TAB_BAR_HEIGHT];
     self.tabBar.backgroundView.backgroundColor = [UIColor colorForKey:SG_COLOR_TAB];
 }
 

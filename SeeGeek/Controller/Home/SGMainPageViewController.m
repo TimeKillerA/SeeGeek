@@ -13,6 +13,7 @@
 #import <MJRefresh.h>
 #import "SGStreamSummaryCell.h"
 #import "SGRefreshCell.h"
+#import "SGStreamSummaryModel.h"
 
 static NSInteger const SECTION_NONE = -1;
 
@@ -45,15 +46,18 @@ static NSInteger const SECTION_HEADER_HEIGHT = 30;
 #pragma mark - setup
 - (void)updateConstraints {
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(self.view).insets(UIEdgeInsetsMake(NAVIGATION_BAR_HEIGHT, 0, -TAB_BAR_HEIGHT, 0));
+        make.edges.mas_equalTo(self.view).insets(UIEdgeInsetsMake(NAVIGATION_BAR_HEIGHT, 0, TAB_BAR_HEIGHT, 0));
     }];
 }
 
 - (void)updateUI {
     NSMutableArray *sectionItemList = [NSMutableArray array];
-    for (NSDictionary *dictionary in [self.viewModel streamsArray]) {
+    NSInteger size = [[self.viewModel streamsArray] count];
+    for (NSInteger i = 0; i < size; i++) {
+        NSDictionary *dictionary = [[self.viewModel streamsArray] objectAtIndex:i];
         NSArray *array = [[dictionary allValues] objectAtIndex:0];
-        SGTableDataSourceSectionItem *item = [[SGTableDataSourceSectionItem alloc] initWithItemCount:[array count]];
+        NSInteger totalCount = [self.viewModel totalCountAtSection:i];
+        SGTableDataSourceSectionItem *item = [[SGTableDataSourceSectionItem alloc] initWithItemCount:[array count]+(totalCount > 3 ? ([self.viewModel expandAtSection:i] ? 1 : 0) : 0)];
         [sectionItemList addObject:item];
     }
     self.dataSource.sectionList = sectionItemList;
@@ -83,16 +87,10 @@ static NSInteger const SECTION_HEADER_HEIGHT = 30;
 #pragma mark - TableViewCellGenerator
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     NSString *identifer = nil;
-    if([self.viewModel expandAtSection:indexPath.section]) {
-        NSDictionary *dictionary = [[self.viewModel streamsArray] objectAtIndex:indexPath.section];
-        NSArray *array = [[dictionary allValues] objectAtIndex:0];
-        if(indexPath.row == 0) {
-            identifer = REFRESH_CELL_IDENTIFER;
-        } else if(indexPath.row >= [array count] + 1) {
-            identifer = REFRESH_CELL_IDENTIFER;
-        } else {
-            identifer = STREAM_CELL_IDENTIFER;
-        }
+    NSDictionary *dictionary = [[self.viewModel streamsArray] objectAtIndex:indexPath.section];
+    NSArray *array = [[dictionary allValues] objectAtIndex:0];
+    if(indexPath.row >= [array count]) {
+        identifer = REFRESH_CELL_IDENTIFER;
     } else {
         identifer = STREAM_CELL_IDENTIFER;
     }
@@ -101,11 +99,18 @@ static NSInteger const SECTION_HEADER_HEIGHT = 30;
         if(!cell || ![cell isKindOfClass:[SGStreamSummaryCell class]]) {
             cell = [[SGStreamSummaryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
         }
+        SGStreamSummaryModel *model = [array objectAtIndex:indexPath.row];
+        cell.summaryModel = model;
         return cell;
     } else {
         SGRefreshCell *cell = [tableView dequeueReusableCellWithIdentifier:identifer];
         if(!cell || ![cell isKindOfClass:[SGRefreshCell class]]) {
             cell = [[SGRefreshCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
+        }
+        if([array count] >= [self.viewModel totalCountAtSection:indexPath.section]) {
+            cell.title = [NSString stringForKey:SG_TEXT_NO_NEW_CONTENT];
+        } else {
+            cell.title = [NSString stringForKey:SG_TEXT_EXCHANGE];
         }
         return cell;
     }
@@ -115,16 +120,10 @@ static NSInteger const SECTION_HEADER_HEIGHT = 30;
 #pragma mark - UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     CGFloat height = 0;
-    if([self.viewModel expandAtSection:indexPath.section]) {
-        NSDictionary *dictionary = [[self.viewModel streamsArray] objectAtIndex:indexPath.section];
-        NSArray *array = [[dictionary allValues] objectAtIndex:0];
-        if(indexPath.row == 0) {
-            height = [SGRefreshCell cellHeight];
-        } else if(indexPath.row >= [array count] + 1) {
-            height = [SGRefreshCell cellHeight];
-        } else {
-            height = [SGStreamSummaryCell cellHeight];
-        }
+    NSDictionary *dictionary = [[self.viewModel streamsArray] objectAtIndex:indexPath.section];
+    NSArray *array = [[dictionary allValues] objectAtIndex:0];
+    if(indexPath.row >= [array count]) {
+        height = [SGRefreshCell cellHeight];
     } else {
         height = [SGStreamSummaryCell cellHeight];
     }
@@ -135,8 +134,56 @@ static NSInteger const SECTION_HEADER_HEIGHT = 30;
     return SECTION_HEADER_HEIGHT;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 0;
+}
+
 - (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    WS(weakSelf);
+    NSDictionary *dictionary = [[self.viewModel streamsArray] objectAtIndex:section];
+    NSString *title = [[dictionary allKeys] objectAtIndex:0];
+    UIView *sectionView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, SECTION_HEADER_HEIGHT)];
+    UILabel *label = [[UILabel alloc] init];
+    label.font = [UIFont fontForKey:SG_FONT_I];
+    label.textColor = [UIColor colorForKey:SG_FONT_I];
+    label.text = title;
+    [sectionView addSubview:label];
+    [label mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(sectionView);
+        make.left.mas_equalTo(sectionView).offset(12);
+    }];
+    BOOL expand = [weakSelf.viewModel expandAtSection:section];
+    UIButton *expandButton = [[UIButton alloc] init];
+    expandButton.enabled = [self.viewModel canExpandAtSection:section];
+    [expandButton setTitleColor:[UIColor colorForFontKey:SG_FONT_I] forState:UIControlStateNormal];
+    expandButton.titleLabel.font = [UIFont fontForKey:SG_FONT_I];
+    [expandButton setImage:[UIImage imageForKey:expand?SG_IMAGE_UNEXPAND:SG_IMAGE_EXPAND] forState:UIControlStateNormal];
+    [expandButton setTitle:[NSString stringForKey:expand?SG_TEXT_UNEXPAND:SG_TEXT_EXPAND] forState:UIControlStateNormal];
+    [[expandButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        [weakSelf.viewModel setExpand:!expand atSection:section];
+        [weakSelf loadDataAtSection:section more:!expand];
+    }];
+    [sectionView addSubview:expandButton];
+    [expandButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.centerY.mas_equalTo(sectionView);
+        make.right.mas_equalTo(sectionView).offset(-12);
+    }];
+    return sectionView;
+}
+
+- (nullable UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
     return nil;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    NSDictionary *dictionary = [[self.viewModel streamsArray] objectAtIndex:indexPath.section];
+    NSArray *array = [[dictionary allValues] objectAtIndex:0];
+    if([array count] > indexPath.row) {
+        [self.viewModel dispatchWithSection:indexPath.section index:indexPath.row];
+    } else {
+        [self loadDataAtSection:indexPath.section more:YES];
+    }
 }
 
 #pragma mark - accessory
@@ -151,11 +198,8 @@ static NSInteger const SECTION_HEADER_HEIGHT = 30;
             [weakSelf loadDataAtSection:SECTION_NONE more:NO];
         }];
         header.lastUpdatedTimeLabel.hidden = YES;
-        MJRefreshAutoFooter *footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
-            [weakSelf loadDataAtSection:SECTION_NONE more:YES];
-        }];
         _tableView.mj_header = header;
-        _tableView.mj_footer = footer;
+        _tableView.sectionFooterHeight = 0;
     }
     return _tableView;
 }

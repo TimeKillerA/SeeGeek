@@ -42,5 +42,7 @@
 
 - (void)setExpand:(BOOL)expand atSection:(NSInteger)section;
 - (BOOL)expandAtSection:(NSInteger)section;
+- (BOOL)canExpandAtSection:(NSInteger)section;
+- (NSInteger)totalCountAtSection:(NSInteger)section;
 
 @end

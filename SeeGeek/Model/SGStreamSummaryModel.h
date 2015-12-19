@@ -8,12 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSInteger, SGStreamType) {
-    SGStreamTypeNone,
-    SGStreamTypeLive,
-    SGStreamTypeClip,
-};
-
 @interface SGStreamSummaryModel : NSObject
 
 /**
