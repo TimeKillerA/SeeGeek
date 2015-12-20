@@ -57,6 +57,9 @@
 		889C81B11C0DA313000E863D /* UIColor+Resource.m in Sources */ = {isa = PBXBuildFile; fileRef = 889C81B01C0DA313000E863D /* UIColor+Resource.m */; };
 		889C81B41C0DA328000E863D /* UIImage+Resource.m in Sources */ = {isa = PBXBuildFile; fileRef = 889C81B31C0DA328000E863D /* UIImage+Resource.m */; };
 		889C81B71C0DAA0F000E863D /* NSString+Resource.m in Sources */ = {isa = PBXBuildFile; fileRef = 889C81B61C0DAA0F000E863D /* NSString+Resource.m */; };
+		88A239871C268CE90001E5CF /* SGMainFindViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A239861C268CE90001E5CF /* SGMainFindViewModel.m */; };
+		88A2398B1C26BCFF0001E5CF /* NSString+Time.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A2398A1C26BCFF0001E5CF /* NSString+Time.m */; };
+		88A2398E1C26C6DB0001E5CF /* SGCollectionViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A2398D1C26C6DB0001E5CF /* SGCollectionViewDataSource.m */; };
 		88B769241C1BEE4C00C52BCB /* SGHomeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B769231C1BEE4C00C52BCB /* SGHomeViewModel.m */; };
 		88B7692B1C1BF45E00C52BCB /* ParameterUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B7692A1C1BF45E00C52BCB /* ParameterUtil.m */; };
 		88B7692F1C1C3A7500C52BCB /* image_tab.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88B7692E1C1C3A7500C52BCB /* image_tab.xcassets */; };
@@ -187,6 +190,13 @@
 		889C81B31C0DA328000E863D /* UIImage+Resource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resource.m"; sourceTree = "<group>"; };
 		889C81B51C0DAA0F000E863D /* NSString+Resource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Resource.h"; sourceTree = "<group>"; };
 		889C81B61C0DAA0F000E863D /* NSString+Resource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Resource.m"; sourceTree = "<group>"; };
+		88A239851C268CE90001E5CF /* SGMainFindViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGMainFindViewModel.h; sourceTree = "<group>"; };
+		88A239861C268CE90001E5CF /* SGMainFindViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGMainFindViewModel.m; sourceTree = "<group>"; };
+		88A239881C268D140001E5CF /* SGMainFindViewModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGMainFindViewModelProtocol.h; sourceTree = "<group>"; };
+		88A239891C26BCFF0001E5CF /* NSString+Time.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Time.h"; sourceTree = "<group>"; };
+		88A2398A1C26BCFF0001E5CF /* NSString+Time.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Time.m"; sourceTree = "<group>"; };
+		88A2398C1C26C6DB0001E5CF /* SGCollectionViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGCollectionViewDataSource.h; sourceTree = "<group>"; };
+		88A2398D1C26C6DB0001E5CF /* SGCollectionViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGCollectionViewDataSource.m; sourceTree = "<group>"; };
 		88B769211C1BED6200C52BCB /* SGHomeViewModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGHomeViewModelProtocol.h; sourceTree = "<group>"; };
 		88B769221C1BEE4C00C52BCB /* SGHomeViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGHomeViewModel.h; sourceTree = "<group>"; };
 		88B769231C1BEE4C00C52BCB /* SGHomeViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGHomeViewModel.m; sourceTree = "<group>"; };
@@ -334,6 +344,8 @@
 				887C81431C252EF900ECF4F1 /* UIImageView+URL.m */,
 				887C81451C252F4400ECF4F1 /* UIImage+Resize.h */,
 				887C81461C252F4400ECF4F1 /* UIImage+Resize.m */,
+				88A239891C26BCFF0001E5CF /* NSString+Time.h */,
+				88A2398A1C26BCFF0001E5CF /* NSString+Time.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -359,6 +371,8 @@
 			children = (
 				8845BFD11C1C880A00513409 /* SGTableDataSource.h */,
 				8845BFD21C1C880A00513409 /* SGTableDataSource.m */,
+				88A2398C1C26C6DB0001E5CF /* SGCollectionViewDataSource.h */,
+				88A2398D1C26C6DB0001E5CF /* SGCollectionViewDataSource.m */,
 			);
 			path = DataSource;
 			sourceTree = "<group>";
@@ -528,6 +542,7 @@
 				88B769211C1BED6200C52BCB /* SGHomeViewModelProtocol.h */,
 				8845BFD71C1C898800513409 /* SGMainPageViewModelProtocol.h */,
 				882056BC1C25A4F100BC0A69 /* SGMainLocationViewModelProtocol.h */,
+				88A239881C268D140001E5CF /* SGMainFindViewModelProtocol.h */,
 			);
 			path = ViewModelProtocol;
 			sourceTree = "<group>";
@@ -539,6 +554,8 @@
 				8845BFD51C1C895600513409 /* SGMainPageViewModel.m */,
 				882056B91C25A4A600BC0A69 /* SGMainLocationViewModel.h */,
 				882056BA1C25A4A600BC0A69 /* SGMainLocationViewModel.m */,
+				88A239851C268CE90001E5CF /* SGMainFindViewModel.h */,
+				88A239861C268CE90001E5CF /* SGMainFindViewModel.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -840,8 +857,10 @@
 				8817CA901C1D86F5006CF852 /* UIViewController+SGNavigationBar.m in Sources */,
 				8845BFCD1C1C768300513409 /* SGStreamSummaryModel.m in Sources */,
 				88769FAB1C1822F300632722 /* SGHomeViewController.m in Sources */,
+				88A239871C268CE90001E5CF /* SGMainFindViewModel.m in Sources */,
 				882056BF1C25A58F00BC0A69 /* SGVideoLocationModel.m in Sources */,
 				881B2C181C0C3DF4000EB589 /* SGViewControllerDispatcher.m in Sources */,
+				88A2398B1C26BCFF0001E5CF /* NSString+Time.m in Sources */,
 				889C81AA1C0DA2B8000E863D /* ResourceManager.m in Sources */,
 				889C81981C0D7A82000E863D /* SGAPIConfigration.m in Sources */,
 				887C81441C252EF900ECF4F1 /* UIImageView+URL.m in Sources */,
@@ -855,6 +874,7 @@
 				88604B461C15641D00391408 /* SGRegisterViewModel.m in Sources */,
 				889A48EE1C143A3F0016F83D /* UIViewController+HUD.m in Sources */,
 				88604B4D1C156E0E00391408 /* SGFindPasswordViewModel.m in Sources */,
+				88A2398E1C26C6DB0001E5CF /* SGCollectionViewDataSource.m in Sources */,
 				889A48DE1C14072F0016F83D /* SGLoginViewController.m in Sources */,
 				88604B511C156EB100391408 /* SGVerifyCodeViewModel.m in Sources */,
 				88FB38161C0EBCA800917778 /* SGCameraDevice.m in Sources */,

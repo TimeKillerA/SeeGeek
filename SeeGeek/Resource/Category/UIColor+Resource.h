@@ -27,6 +27,8 @@
  */
 + (instancetype)colorForARGB:(NSString *)argb;
 
++ (instancetype)lineColor;
+
 @end
 
 FOUNDATION_EXTERN NSString *const SG_COLOR_WHITE;
@@ -36,5 +38,8 @@ FOUNDATION_EXTERN NSString *const SG_COLOR_TAB;
 FOUNDATION_EXTERN NSString *const SG_COLOR_TAB_SELECT;
 FOUNDATION_EXTERN NSString *const SG_COLOR_REFRESH_CELL_BG;
 FOUNDATION_EXTERN NSString *const SG_COLOR_NORMAL_GRAY_BG;
+FOUNDATION_EXTERN NSString *const SG_COLOR_CONTROLLER_GRAY_BG;
+
+
 
 

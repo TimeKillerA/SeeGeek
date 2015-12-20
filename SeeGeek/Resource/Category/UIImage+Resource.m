@@ -60,6 +60,13 @@ NSString *const SG_IMAGE_ANNOTATION_CLIP = @"annotation_clip_bg";
 NSString *const SG_IMAGE_ANNOTATION_LIVE = @"annotation_live_bg";
 NSString *const SG_IMAGE_SEARCH = @"icon_search";
 
+#pragma mark - personnal
+NSString *const SG_IMAGE_COLLECTION_STYLE = @"icon_grid_style";
+NSString *const SG_IMAGE_COLLECTION_STYLE_HIGHLIGHT = @"icon_grid_style_highlight";
+NSString *const SG_IMAGE_TABLE_STYLE = @"icon_table_style";
+NSString *const SG_IMAGE_TABLE_STYLE_HIGHLIGHT = @"icon_table_style_highlight";
+NSString *const SG_IMAGE_SETTINGS = @"icon_settings";
+
 
 
 

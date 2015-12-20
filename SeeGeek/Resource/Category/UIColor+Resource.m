@@ -87,6 +87,10 @@
     return resultColor;
 }
 
++ (instancetype)lineColor {
+    return [UIColor colorForARGB:@"#666666"];
+}
+
 @end
 
 NSString *const SG_COLOR_WHITE      = @"white";
@@ -96,6 +100,8 @@ NSString *const SG_COLOR_TAB        = @"tab";
 NSString *const SG_COLOR_TAB_SELECT = @"tab_select";
 NSString *const SG_COLOR_REFRESH_CELL_BG = @"refresh_cell_bg";
 NSString *const SG_COLOR_NORMAL_GRAY_BG = @"normal_gray_bg";
+NSString *const SG_COLOR_CONTROLLER_GRAY_BG = @"controller_gray_bg";
+
 
 
 

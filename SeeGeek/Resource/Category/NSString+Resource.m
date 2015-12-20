@@ -29,6 +29,9 @@ NSString *const SG_TEXT_UNEXPAND = @"收起";
 NSString *const SG_TEXT_EXCHANGE = @"换一换";
 NSString *const SG_TEXT_NO_NEW_CONTENT = @"没有新内容";
 NSString *const SG_TEXT_FOCUS_LOCATION = @"关注位置";
+NSString *const SG_TEXT_NOTHING_HAPPEN = @"此时此刻没有事件发生，世界已经安定了";
+NSString *const SG_TEXT_PERSONNAL_SETTINGS = @"个人设置编辑";
+NSString *const SG_TEXT_INIT_PERSONNAL_SIGN = @"个性签名在这里";
 
 
 
