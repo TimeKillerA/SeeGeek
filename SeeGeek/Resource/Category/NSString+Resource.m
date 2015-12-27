@@ -30,8 +30,21 @@ NSString *const SG_TEXT_EXCHANGE = @"换一换";
 NSString *const SG_TEXT_NO_NEW_CONTENT = @"没有新内容";
 NSString *const SG_TEXT_FOCUS_LOCATION = @"关注位置";
 NSString *const SG_TEXT_NOTHING_HAPPEN = @"此时此刻没有事件发生，世界已经安定了";
-NSString *const SG_TEXT_PERSONNAL_SETTINGS = @"个人设置编辑";
+NSString *const SG_TEXT_PERSONNAL_SETTINGS = @"个人设置";
 NSString *const SG_TEXT_INIT_PERSONNAL_SIGN = @"个性签名在这里";
+NSString *const SG_TEXT_PERSONNAL_EMPTY_STREAM = @"还没有你的分享，芝麻小事亦有造福他人的大能量，立刻开始?";
+NSString *const SG_TEXT_LIVE_STREAM_NOW = @"立刻直播";
+NSString *const SG_TEXT_EXPAND_ALL_COMMENT = @"展开所有评论";
+NSString *const SG_TEXT_PUBLISH = @"发布";
+NSString *const SG_TEXT_FOCUS = @"关注";
+NSString *const SG_TEXT_FANS = @"粉丝";
+NSString *const SG_TEXT_NICK_NAME = @"昵称";
+NSString *const SG_TEXT_HOBBIES = @"兴趣";
+NSString *const SG_TEXT_GENDER = @"性别";
+NSString *const SG_TEXT_PERSONNAL_SIGN = @"个性签名";
+NSString *const SG_TEXT_HOME_ADDRESS = @"家庭地址";
+NSString *const SG_TEXT_WORK_ADDRESS = @"工作地址";
+
 
 
 

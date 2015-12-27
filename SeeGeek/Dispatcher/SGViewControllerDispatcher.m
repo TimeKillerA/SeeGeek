@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 #import "SGViewControllerDelegate.h"
+#import "SGHomeViewController.h"
 
 @implementation SGViewControllerDispatcher
 
@@ -90,9 +91,9 @@
             activityViewController = window.rootViewController;
         }
     }
-//    if([activityViewController isKindOfClass:[HomeViewController class]]) {
-//        activityViewController = [(HomeViewController *)activityViewController selectedViewController];
-//    }
+    if([activityViewController isKindOfClass:[SGHomeViewController class]]) {
+        activityViewController = [(SGHomeViewController *)activityViewController selectedViewController];
+    }
 
     return activityViewController;
 }

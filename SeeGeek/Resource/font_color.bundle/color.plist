@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>sg_red</key>
+	<string>#e94f4f</string>
 	<key>controller_gray_bg</key>
 	<string>#e7e7ec</string>
 	<key>normal_gray_bg</key>

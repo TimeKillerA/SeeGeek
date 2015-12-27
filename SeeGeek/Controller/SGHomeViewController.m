@@ -17,6 +17,7 @@
 #import "SGMainFindViewController.h"
 #import "SGMainUserViewController.h"
 #import "SGResource.h"
+#import "SGSwipNavigationController.h"
 
 @interface SGHomeViewController ()<SGViewControllerDelegate>
 
@@ -153,7 +154,7 @@
         if([viewController respondsToSelector:@selector(onViewModelLoaded:)]) {
             [viewController onViewModelLoaded:[self.viewModel viewModelAtIndex:0]];
         }
-        _navigationTab1 = [[UINavigationController alloc] initWithRootViewController:viewController];
+        _navigationTab1 = [[SGSwipNavigationController alloc] initWithRootViewController:viewController];
     }
     return _navigationTab1;
 }
@@ -164,7 +165,7 @@
         if([viewController respondsToSelector:@selector(onViewModelLoaded:)]) {
             [viewController onViewModelLoaded:[self.viewModel viewModelAtIndex:1]];
         }
-        _navigationTab2 = [[UINavigationController alloc] initWithRootViewController:viewController];
+        _navigationTab2 = [[SGSwipNavigationController alloc] initWithRootViewController:viewController];
     }
     return _navigationTab2;
 }
@@ -175,7 +176,7 @@
         if([viewController respondsToSelector:@selector(onViewModelLoaded:)]) {
             [viewController onViewModelLoaded:[self.viewModel viewModelAtIndex:2]];
         }
-        _navigationTab3 = [[UINavigationController alloc] initWithRootViewController:viewController];
+        _navigationTab3 = [[SGSwipNavigationController alloc] initWithRootViewController:viewController];
     }
     return _navigationTab3;
 }
@@ -186,7 +187,7 @@
         if([viewController respondsToSelector:@selector(onViewModelLoaded:)]) {
             [viewController onViewModelLoaded:[self.viewModel viewModelAtIndex:3]];
         }
-        _navigationTab4 = [[UINavigationController alloc] initWithRootViewController:viewController];
+        _navigationTab4 = [[SGSwipNavigationController alloc] initWithRootViewController:viewController];
     }
     return _navigationTab4;
 }
@@ -197,7 +198,7 @@
         if([viewController respondsToSelector:@selector(onViewModelLoaded:)]) {
             [viewController onViewModelLoaded:[self.viewModel viewModelAtIndex:4]];
         }
-        _navigationTab5 = [[UINavigationController alloc] initWithRootViewController:viewController];
+        _navigationTab5 = [[SGSwipNavigationController alloc] initWithRootViewController:viewController];
     }
     return _navigationTab5;
 }

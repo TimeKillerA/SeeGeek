@@ -66,7 +66,7 @@ NSString *const SG_IMAGE_COLLECTION_STYLE_HIGHLIGHT = @"icon_grid_style_highligh
 NSString *const SG_IMAGE_TABLE_STYLE = @"icon_table_style";
 NSString *const SG_IMAGE_TABLE_STYLE_HIGHLIGHT = @"icon_table_style_highlight";
 NSString *const SG_IMAGE_SETTINGS = @"icon_settings";
-
+NSString *const SG_IMAGE_FIELD_NEXT = @"icon_field_next";
 
 
 

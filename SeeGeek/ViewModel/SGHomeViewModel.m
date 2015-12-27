@@ -11,6 +11,7 @@
 #import "SGMainPageViewModel.h"
 #import "SGMainLocationViewModel.h"
 #import "SGMainFindViewModel.h"
+#import "SGMainUserViewModel.h"
 
 @interface SGHomeViewModel ()
 
@@ -45,6 +46,8 @@
             return [[SGMainLocationViewModel alloc] init];
         case 3:
             return [[SGMainFindViewModel alloc] init];
+        case 4:
+            return [[SGMainUserViewModel alloc] init];
         default:
             break;
     }

@@ -63,6 +63,23 @@
 		88B769241C1BEE4C00C52BCB /* SGHomeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B769231C1BEE4C00C52BCB /* SGHomeViewModel.m */; };
 		88B7692B1C1BF45E00C52BCB /* ParameterUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B7692A1C1BF45E00C52BCB /* ParameterUtil.m */; };
 		88B7692F1C1C3A7500C52BCB /* image_tab.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88B7692E1C1C3A7500C52BCB /* image_tab.xcassets */; };
+		88BD3C8B1C2FC90100F783C2 /* SGPersonnalSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BD3C8A1C2FC90100F783C2 /* SGPersonnalSettingsViewController.m */; };
+		88BD3C8E1C2FC92B00F783C2 /* SGPersonnalSettingsViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BD3C8D1C2FC92B00F783C2 /* SGPersonnalSettingsViewModel.m */; };
+		88BD3C911C2FCA7A00F783C2 /* SGPersonnalSettingsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BD3C901C2FCA7A00F783C2 /* SGPersonnalSettingsModel.m */; };
+		88BD3C961C2FD2B300F783C2 /* SGPersonnalSettingsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BD3C951C2FD2B300F783C2 /* SGPersonnalSettingsCell.m */; };
+		88BD3C991C2FE41900F783C2 /* SGSwipNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BD3C981C2FE41900F783C2 /* SGSwipNavigationController.m */; };
+		88BD3C9C1C2FF58600F783C2 /* SGPersonLocationSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BD3C9B1C2FF58600F783C2 /* SGPersonLocationSettingViewController.m */; };
+		88BD3CA01C2FF71800F783C2 /* SGPersonLocationSettingViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BD3C9F1C2FF71800F783C2 /* SGPersonLocationSettingViewModel.m */; };
+		88C872DA1C300846007A674D /* SGPersonnalTextChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C872D91C300846007A674D /* SGPersonnalTextChangeViewController.m */; };
+		88C872DE1C30095E007A674D /* SGPersonnalTextChangeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C872DD1C30095E007A674D /* SGPersonnalTextChangeViewModel.m */; };
+		88D5CD601C2A7DD100844135 /* SGMainUserViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D5CD5F1C2A7DD100844135 /* SGMainUserViewModel.m */; };
+		88D5CD631C2A82BF00844135 /* SGStreamSummaryWithCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D5CD621C2A82BF00844135 /* SGStreamSummaryWithCommentCell.m */; };
+		88D5CD661C2A830100844135 /* SGStreamSummaryWithCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D5CD651C2A830100844135 /* SGStreamSummaryWithCommentModel.m */; };
+		88D5CD6F1C2A849600844135 /* SGCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D5CD6E1C2A849600844135 /* SGCommentCell.m */; };
+		88D5CD721C2A853700844135 /* SGCommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D5CD711C2A853700844135 /* SGCommentModel.m */; };
+		88D5CD751C2A85F400844135 /* SGUserSummaryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D5CD741C2A85F400844135 /* SGUserSummaryModel.m */; };
+		88D5CD781C2AA03000844135 /* SGStreamSnapCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D5CD771C2AA03000844135 /* SGStreamSnapCell.m */; };
+		88D5CD7B1C2AB7EF00844135 /* UICollectionView+CellHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D5CD7A1C2AB7EF00844135 /* UICollectionView+CellHeight.m */; };
 		88FB38071C0EBC0700917778 /* SGVideoConfigration.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FB38061C0EBC0700917778 /* SGVideoConfigration.m */; };
 		88FB380A1C0EBC1A00917778 /* SGAudioConfigration.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FB38091C0EBC1A00917778 /* SGAudioConfigration.m */; };
 		88FB380D1C0EBC2F00917778 /* SGStreamConfigration.m in Sources */ = {isa = PBXBuildFile; fileRef = 88FB380C1C0EBC2F00917778 /* SGStreamConfigration.m */; };
@@ -203,6 +220,44 @@
 		88B769291C1BF45E00C52BCB /* ParameterUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParameterUtil.h; sourceTree = "<group>"; };
 		88B7692A1C1BF45E00C52BCB /* ParameterUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParameterUtil.m; sourceTree = "<group>"; };
 		88B7692E1C1C3A7500C52BCB /* image_tab.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = image_tab.xcassets; sourceTree = "<group>"; };
+		88BD3C891C2FC90100F783C2 /* SGPersonnalSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPersonnalSettingsViewController.h; sourceTree = "<group>"; };
+		88BD3C8A1C2FC90100F783C2 /* SGPersonnalSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGPersonnalSettingsViewController.m; sourceTree = "<group>"; };
+		88BD3C8C1C2FC92B00F783C2 /* SGPersonnalSettingsViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPersonnalSettingsViewModel.h; sourceTree = "<group>"; };
+		88BD3C8D1C2FC92B00F783C2 /* SGPersonnalSettingsViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGPersonnalSettingsViewModel.m; sourceTree = "<group>"; };
+		88BD3C8F1C2FCA7A00F783C2 /* SGPersonnalSettingsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPersonnalSettingsModel.h; sourceTree = "<group>"; };
+		88BD3C901C2FCA7A00F783C2 /* SGPersonnalSettingsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGPersonnalSettingsModel.m; sourceTree = "<group>"; };
+		88BD3C931C2FCB8C00F783C2 /* SGPersonnalSettingsViewModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPersonnalSettingsViewModelProtocol.h; sourceTree = "<group>"; };
+		88BD3C941C2FD2B300F783C2 /* SGPersonnalSettingsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPersonnalSettingsCell.h; sourceTree = "<group>"; };
+		88BD3C951C2FD2B300F783C2 /* SGPersonnalSettingsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGPersonnalSettingsCell.m; sourceTree = "<group>"; };
+		88BD3C971C2FE41900F783C2 /* SGSwipNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGSwipNavigationController.h; sourceTree = "<group>"; };
+		88BD3C981C2FE41900F783C2 /* SGSwipNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGSwipNavigationController.m; sourceTree = "<group>"; };
+		88BD3C9A1C2FF58600F783C2 /* SGPersonLocationSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPersonLocationSettingViewController.h; sourceTree = "<group>"; };
+		88BD3C9B1C2FF58600F783C2 /* SGPersonLocationSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGPersonLocationSettingViewController.m; sourceTree = "<group>"; };
+		88BD3C9D1C2FF61200F783C2 /* SGPersonLocationSettingViewModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPersonLocationSettingViewModelProtocol.h; sourceTree = "<group>"; };
+		88BD3C9E1C2FF71800F783C2 /* SGPersonLocationSettingViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPersonLocationSettingViewModel.h; sourceTree = "<group>"; };
+		88BD3C9F1C2FF71800F783C2 /* SGPersonLocationSettingViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGPersonLocationSettingViewModel.m; sourceTree = "<group>"; };
+		88C872D81C300846007A674D /* SGPersonnalTextChangeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPersonnalTextChangeViewController.h; sourceTree = "<group>"; };
+		88C872D91C300846007A674D /* SGPersonnalTextChangeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGPersonnalTextChangeViewController.m; sourceTree = "<group>"; };
+		88C872DB1C300870007A674D /* SGPersonnalTextChangeViewModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPersonnalTextChangeViewModelProtocol.h; sourceTree = "<group>"; };
+		88C872DC1C30095E007A674D /* SGPersonnalTextChangeViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPersonnalTextChangeViewModel.h; sourceTree = "<group>"; };
+		88C872DD1C30095E007A674D /* SGPersonnalTextChangeViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGPersonnalTextChangeViewModel.m; sourceTree = "<group>"; };
+		88D5CD5D1C2A7BAC00844135 /* SGMainUserViewModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGMainUserViewModelProtocol.h; sourceTree = "<group>"; };
+		88D5CD5E1C2A7DD100844135 /* SGMainUserViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGMainUserViewModel.h; sourceTree = "<group>"; };
+		88D5CD5F1C2A7DD100844135 /* SGMainUserViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGMainUserViewModel.m; sourceTree = "<group>"; };
+		88D5CD611C2A82BF00844135 /* SGStreamSummaryWithCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGStreamSummaryWithCommentCell.h; sourceTree = "<group>"; };
+		88D5CD621C2A82BF00844135 /* SGStreamSummaryWithCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGStreamSummaryWithCommentCell.m; sourceTree = "<group>"; };
+		88D5CD641C2A830100844135 /* SGStreamSummaryWithCommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGStreamSummaryWithCommentModel.h; sourceTree = "<group>"; };
+		88D5CD651C2A830100844135 /* SGStreamSummaryWithCommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGStreamSummaryWithCommentModel.m; sourceTree = "<group>"; };
+		88D5CD6D1C2A849600844135 /* SGCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGCommentCell.h; sourceTree = "<group>"; };
+		88D5CD6E1C2A849600844135 /* SGCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGCommentCell.m; sourceTree = "<group>"; };
+		88D5CD701C2A853700844135 /* SGCommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGCommentModel.h; sourceTree = "<group>"; };
+		88D5CD711C2A853700844135 /* SGCommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGCommentModel.m; sourceTree = "<group>"; };
+		88D5CD731C2A85F400844135 /* SGUserSummaryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGUserSummaryModel.h; sourceTree = "<group>"; };
+		88D5CD741C2A85F400844135 /* SGUserSummaryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGUserSummaryModel.m; sourceTree = "<group>"; };
+		88D5CD761C2AA03000844135 /* SGStreamSnapCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGStreamSnapCell.h; sourceTree = "<group>"; };
+		88D5CD771C2AA03000844135 /* SGStreamSnapCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGStreamSnapCell.m; sourceTree = "<group>"; };
+		88D5CD791C2AB7EF00844135 /* UICollectionView+CellHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+CellHeight.h"; sourceTree = "<group>"; };
+		88D5CD7A1C2AB7EF00844135 /* UICollectionView+CellHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+CellHeight.m"; sourceTree = "<group>"; };
 		88FB38051C0EBC0700917778 /* SGVideoConfigration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGVideoConfigration.h; sourceTree = "<group>"; };
 		88FB38061C0EBC0700917778 /* SGVideoConfigration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGVideoConfigration.m; sourceTree = "<group>"; };
 		88FB38081C0EBC1A00917778 /* SGAudioConfigration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGAudioConfigration.h; sourceTree = "<group>"; };
@@ -346,6 +401,8 @@
 				887C81461C252F4400ECF4F1 /* UIImage+Resize.m */,
 				88A239891C26BCFF0001E5CF /* NSString+Time.h */,
 				88A2398A1C26BCFF0001E5CF /* NSString+Time.m */,
+				88D5CD791C2AB7EF00844135 /* UICollectionView+CellHeight.h */,
+				88D5CD7A1C2AB7EF00844135 /* UICollectionView+CellHeight.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -362,6 +419,8 @@
 				881B2C0E1C0C2CB9000EB589 /* SGLaunchViewController.m */,
 				88769FA91C1822F300632722 /* SGHomeViewController.h */,
 				88769FAA1C1822F300632722 /* SGHomeViewController.m */,
+				88BD3C971C2FE41900F783C2 /* SGSwipNavigationController.h */,
+				88BD3C981C2FE41900F783C2 /* SGSwipNavigationController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -402,6 +461,14 @@
 				8845BFCC1C1C768300513409 /* SGStreamSummaryModel.m */,
 				882056BD1C25A58F00BC0A69 /* SGVideoLocationModel.h */,
 				882056BE1C25A58F00BC0A69 /* SGVideoLocationModel.m */,
+				88D5CD641C2A830100844135 /* SGStreamSummaryWithCommentModel.h */,
+				88D5CD651C2A830100844135 /* SGStreamSummaryWithCommentModel.m */,
+				88D5CD701C2A853700844135 /* SGCommentModel.h */,
+				88D5CD711C2A853700844135 /* SGCommentModel.m */,
+				88D5CD731C2A85F400844135 /* SGUserSummaryModel.h */,
+				88D5CD741C2A85F400844135 /* SGUserSummaryModel.m */,
+				88BD3C8F1C2FCA7A00F783C2 /* SGPersonnalSettingsModel.h */,
+				88BD3C901C2FCA7A00F783C2 /* SGPersonnalSettingsModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -512,6 +579,12 @@
 		881B2C0B1C0C2C8C000EB589 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				88BD3C891C2FC90100F783C2 /* SGPersonnalSettingsViewController.h */,
+				88BD3C8A1C2FC90100F783C2 /* SGPersonnalSettingsViewController.m */,
+				88BD3C9A1C2FF58600F783C2 /* SGPersonLocationSettingViewController.h */,
+				88BD3C9B1C2FF58600F783C2 /* SGPersonLocationSettingViewController.m */,
+				88C872D81C300846007A674D /* SGPersonnalTextChangeViewController.h */,
+				88C872D91C300846007A674D /* SGPersonnalTextChangeViewController.m */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -535,6 +608,7 @@
 		881B2C1C1C0C411B000EB589 /* ViewModelProtocol */ = {
 			isa = PBXGroup;
 			children = (
+				88BD3C921C2FCB6300F783C2 /* Settings */,
 				881B2C1D1C0C4150000EB589 /* SGLaunchViewModelProtocol.h */,
 				889A48E61C1408BD0016F83D /* SGLoginViewModelProtocol.h */,
 				88604B431C15633300391408 /* SGRegisterViewModelDelegate.h */,
@@ -543,6 +617,7 @@
 				8845BFD71C1C898800513409 /* SGMainPageViewModelProtocol.h */,
 				882056BC1C25A4F100BC0A69 /* SGMainLocationViewModelProtocol.h */,
 				88A239881C268D140001E5CF /* SGMainFindViewModelProtocol.h */,
+				88D5CD5D1C2A7BAC00844135 /* SGMainUserViewModelProtocol.h */,
 			);
 			path = ViewModelProtocol;
 			sourceTree = "<group>";
@@ -556,6 +631,8 @@
 				882056BA1C25A4A600BC0A69 /* SGMainLocationViewModel.m */,
 				88A239851C268CE90001E5CF /* SGMainFindViewModel.h */,
 				88A239861C268CE90001E5CF /* SGMainFindViewModel.m */,
+				88D5CD5E1C2A7DD100844135 /* SGMainUserViewModel.h */,
+				88D5CD5F1C2A7DD100844135 /* SGMainUserViewModel.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -586,6 +663,14 @@
 				8817CA8C1C1D84E5006CF852 /* SGRefreshCell.m */,
 				882056C01C25AC7900BC0A69 /* SGStreamSummaryLittleSnapCell.h */,
 				882056C11C25AC7900BC0A69 /* SGStreamSummaryLittleSnapCell.m */,
+				88D5CD611C2A82BF00844135 /* SGStreamSummaryWithCommentCell.h */,
+				88D5CD621C2A82BF00844135 /* SGStreamSummaryWithCommentCell.m */,
+				88D5CD6D1C2A849600844135 /* SGCommentCell.h */,
+				88D5CD6E1C2A849600844135 /* SGCommentCell.m */,
+				88D5CD761C2AA03000844135 /* SGStreamSnapCell.h */,
+				88D5CD771C2AA03000844135 /* SGStreamSnapCell.m */,
+				88BD3C941C2FD2B300F783C2 /* SGPersonnalSettingsCell.h */,
+				88BD3C951C2FD2B300F783C2 /* SGPersonnalSettingsCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -622,6 +707,12 @@
 		889A48E11C14086F0016F83D /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				88BD3C8C1C2FC92B00F783C2 /* SGPersonnalSettingsViewModel.h */,
+				88BD3C8D1C2FC92B00F783C2 /* SGPersonnalSettingsViewModel.m */,
+				88BD3C9E1C2FF71800F783C2 /* SGPersonLocationSettingViewModel.h */,
+				88BD3C9F1C2FF71800F783C2 /* SGPersonLocationSettingViewModel.m */,
+				88C872DC1C30095E007A674D /* SGPersonnalTextChangeViewModel.h */,
+				88C872DD1C30095E007A674D /* SGPersonnalTextChangeViewModel.m */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -664,6 +755,16 @@
 				88B7692A1C1BF45E00C52BCB /* ParameterUtil.m */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		88BD3C921C2FCB6300F783C2 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				88BD3C931C2FCB8C00F783C2 /* SGPersonnalSettingsViewModelProtocol.h */,
+				88BD3C9D1C2FF61200F783C2 /* SGPersonLocationSettingViewModelProtocol.h */,
+				88C872DB1C300870007A674D /* SGPersonnalTextChangeViewModelProtocol.h */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		88FB38041C0EBBE700917778 /* Video */ = {
@@ -827,21 +928,28 @@
 			files = (
 				882056B81C25A32600BC0A69 /* LocationManager.m in Sources */,
 				8845BFD31C1C880A00513409 /* SGTableDataSource.m in Sources */,
+				88D5CD721C2A853700844135 /* SGCommentModel.m in Sources */,
 				889C81B41C0DA328000E863D /* UIImage+Resource.m in Sources */,
 				8845BFBE1C1C501A00513409 /* SGMainPageViewController.m in Sources */,
 				88B7692B1C1BF45E00C52BCB /* ParameterUtil.m in Sources */,
 				88604B491C156D4300391408 /* SGFindPasswordViewController.m in Sources */,
 				889C81B71C0DAA0F000E863D /* NSString+Resource.m in Sources */,
+				88D5CD6F1C2A849600844135 /* SGCommentCell.m in Sources */,
 				889C81AE1C0DA2FF000E863D /* UIFont+Resource.m in Sources */,
 				8845BFDB1C1C99DE00513409 /* SGStreamSummaryCell.m in Sources */,
 				889C81B11C0DA313000E863D /* UIColor+Resource.m in Sources */,
 				881B2C0F1C0C2CB9000EB589 /* SGLaunchViewController.m in Sources */,
+				88BD3C9C1C2FF58600F783C2 /* SGPersonLocationSettingViewController.m in Sources */,
 				882056BB1C25A4A600BC0A69 /* SGMainLocationViewModel.m in Sources */,
 				88FB380D1C0EBC2F00917778 /* SGStreamConfigration.m in Sources */,
+				88BD3C991C2FE41900F783C2 /* SGSwipNavigationController.m in Sources */,
+				88BD3C8B1C2FC90100F783C2 /* SGPersonnalSettingsViewController.m in Sources */,
+				88D5CD781C2AA03000844135 /* SGStreamSnapCell.m in Sources */,
 				881B2BE01C0C1FB9000EB589 /* AppDelegate.m in Sources */,
 				881B2C1B1C0C40E1000EB589 /* SGLanchViewModel.m in Sources */,
 				881B2BDD1C0C1FB8000EB589 /* main.m in Sources */,
 				88FB38231C0ED4C600917778 /* SGVideoRecorder.m in Sources */,
+				88D5CD751C2A85F400844135 /* SGUserSummaryModel.m in Sources */,
 				8845BFD61C1C895600513409 /* SGMainPageViewModel.m in Sources */,
 				889C819E1C0D7C3F000E863D /* NSError+Constructor.m in Sources */,
 				88FB38131C0EBC7100917778 /* SGAVPublisher.m in Sources */,
@@ -853,18 +961,25 @@
 				889C819B1C0D7AA9000E863D /* SGAPIHelper.m in Sources */,
 				88FB38101C0EBC6000917778 /* SGAVEncoder.m in Sources */,
 				88FB38071C0EBC0700917778 /* SGVideoConfigration.m in Sources */,
+				88BD3C911C2FCA7A00F783C2 /* SGPersonnalSettingsModel.m in Sources */,
 				889A48EA1C140FDF0016F83D /* SGTextField.m in Sources */,
+				88BD3C8E1C2FC92B00F783C2 /* SGPersonnalSettingsViewModel.m in Sources */,
 				8817CA901C1D86F5006CF852 /* UIViewController+SGNavigationBar.m in Sources */,
 				8845BFCD1C1C768300513409 /* SGStreamSummaryModel.m in Sources */,
 				88769FAB1C1822F300632722 /* SGHomeViewController.m in Sources */,
 				88A239871C268CE90001E5CF /* SGMainFindViewModel.m in Sources */,
+				88C872DE1C30095E007A674D /* SGPersonnalTextChangeViewModel.m in Sources */,
 				882056BF1C25A58F00BC0A69 /* SGVideoLocationModel.m in Sources */,
+				88D5CD601C2A7DD100844135 /* SGMainUserViewModel.m in Sources */,
 				881B2C181C0C3DF4000EB589 /* SGViewControllerDispatcher.m in Sources */,
 				88A2398B1C26BCFF0001E5CF /* NSString+Time.m in Sources */,
+				88D5CD7B1C2AB7EF00844135 /* UICollectionView+CellHeight.m in Sources */,
 				889C81AA1C0DA2B8000E863D /* ResourceManager.m in Sources */,
+				88C872DA1C300846007A674D /* SGPersonnalTextChangeViewController.m in Sources */,
 				889C81981C0D7A82000E863D /* SGAPIConfigration.m in Sources */,
 				887C81441C252EF900ECF4F1 /* UIImageView+URL.m in Sources */,
 				88FB38201C0EC23900917778 /* SGEncodedFrame.m in Sources */,
+				88BD3C961C2FD2B300F783C2 /* SGPersonnalSettingsCell.m in Sources */,
 				889C81A31C0D8448000E863D /* SGLogManager.m in Sources */,
 				8845BFC71C1C504A00513409 /* SGMainFindViewController.m in Sources */,
 				8845BFC41C1C503A00513409 /* SGMainRecordViewController.m in Sources */,
@@ -876,8 +991,11 @@
 				88604B4D1C156E0E00391408 /* SGFindPasswordViewModel.m in Sources */,
 				88A2398E1C26C6DB0001E5CF /* SGCollectionViewDataSource.m in Sources */,
 				889A48DE1C14072F0016F83D /* SGLoginViewController.m in Sources */,
+				88D5CD661C2A830100844135 /* SGStreamSummaryWithCommentModel.m in Sources */,
+				88D5CD631C2A82BF00844135 /* SGStreamSummaryWithCommentCell.m in Sources */,
 				88604B511C156EB100391408 /* SGVerifyCodeViewModel.m in Sources */,
 				88FB38161C0EBCA800917778 /* SGCameraDevice.m in Sources */,
+				88BD3CA01C2FF71800F783C2 /* SGPersonLocationSettingViewModel.m in Sources */,
 				88FB380A1C0EBC1A00917778 /* SGAudioConfigration.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

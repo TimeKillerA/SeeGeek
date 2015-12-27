@@ -105,6 +105,10 @@
     }];
     [[[RACObserve(self, rightImage) deliverOnMainThread] distinctUntilChanged]  subscribeNext:^(id x) {
         weakSelf.rightImageView.image = x;
+        [weakSelf.rightImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(weakSelf.rightImage.size.width);
+            make.height.mas_equalTo(weakSelf.rightImage.size.height);
+        }];
     }];
     [[[RACObserve(self, editEnable) deliverOnMainThread] distinctUntilChanged]  subscribeNext:^(id x) {
         weakSelf.textField.enabled = [x boolValue];
@@ -227,7 +231,7 @@
     }];
     [self.rightImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         CGFloat offset = self.rightImage ? self.insets.right : 0;
-        make.right.mas_equalTo(self.tkRoundView).offset(offset);
+        make.right.mas_equalTo(self.tkRoundView).offset(-offset);
         make.centerY.mas_equalTo(self.tkRoundView);
         make.width.mas_equalTo(self.rightImage.size.width);
         make.height.mas_equalTo(self.rightImage.size.height);

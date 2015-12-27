@@ -13,7 +13,7 @@ typedef UICollectionViewCell *(^CollectionViewCellGenerator)(UICollectionView *c
 
 typedef UICollectionReusableView *(^CollectionViewReusableViewGenerator)(UICollectionView *collectionView, NSString *kind, NSIndexPath *indexPath);
 
-@interface SGCollectionViewDataSource : NSObject
+@interface SGCollectionViewDataSource : NSObject<UICollectionViewDataSource>
 
 @property (nonatomic, strong)NSArray *sectionList;
 
