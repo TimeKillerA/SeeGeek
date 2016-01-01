@@ -18,5 +18,6 @@
  *  @return 
  */
 - (id)viewModelAtIndex:(NSInteger)index;
+- (void)dispatchToVideoPublisher;
 
 @end

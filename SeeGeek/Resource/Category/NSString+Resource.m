@@ -44,6 +44,9 @@ NSString *const SG_TEXT_GENDER = @"性别";
 NSString *const SG_TEXT_PERSONNAL_SIGN = @"个性签名";
 NSString *const SG_TEXT_HOME_ADDRESS = @"家庭地址";
 NSString *const SG_TEXT_WORK_ADDRESS = @"工作地址";
+NSString *const SG_TEXT_REPORT = @"举报";
+NSString *const SG_TEXT_SHARE = @"分享";
+NSString *const SG_TEXT_SHARE_PLACEHOLDER = @"说说分享心得";
 
 
 

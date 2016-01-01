@@ -51,6 +51,7 @@ NSString *const SG_IMAGE_LIKE = @"icon_like_bg";
 NSString *const SG_IMAGE_COMMENT = @"icon_comment_bg";
 NSString *const SG_IMAGE_CLIP_SLIDE_BG = @"icon_clip_slide_bg";
 NSString *const SG_IMAGE_CLIP_DURATION_BG = @"icon_clip_duration_bg";
+NSString *const SG_IMAGE_LIVE_TIME_BG = @"icon_live_time_bg";
 NSString *const SG_IMAGE_STREAM_EMPTY_LOGO = @"icon_stream_snap_empty";
 NSString *const SG_IMAGE_WHITE_PLAY = @"icon_white_play";
 NSString *const SG_IMAGE_LOCATION = @"icon_location";
@@ -68,8 +69,27 @@ NSString *const SG_IMAGE_TABLE_STYLE_HIGHLIGHT = @"icon_table_style_highlight";
 NSString *const SG_IMAGE_SETTINGS = @"icon_settings";
 NSString *const SG_IMAGE_FIELD_NEXT = @"icon_field_next";
 
+#pragma mark - video
+NSString *const SG_IMAGE_CLOSE = @"icon_close";
+NSString *const SG_IMAGE_CLOSE_HIGHLIGHT = @"icon_close_highlight";
+NSString *const SG_IMAGE_VIDEO_LIKE = @"icon_video_like";
+NSString *const SG_IMAGE_VIDEO_CHAT_BUTTON = @"icon_video_chat_button";
+NSString *const SG_IMAGE_VIDEO_CHAT_CLOSE_BUTTON = @"icon_video_chat_close_button";
+NSString *const SG_IMAGE_VIDEO_SHARE_BUTTON = @"icon_video_share_button";
 
-
+#pragma mark - share
+NSString *const SG_IMAGE_SHARE_QQ = @"icon_share_qq";
+NSString *const SG_IMAGE_SHARE_QQ_HIGHLIGHT = @"icon_share_qq_highlight";
+NSString *const SG_IMAGE_SHARE_WECHAT = @"icon_share_wechat_message";
+NSString *const SG_IMAGE_SHARE_WECHAT_HIGHLIGHT = @"icon_share_wechat_message_highlight";
+NSString *const SG_IMAGE_SHARE_QZONE = @"icon_share_qzone";
+NSString *const SG_IMAGE_SHARE_QZONE_HIGHLIGHT = @"icon_share_qzone_highlight";
+NSString *const SG_IMAGE_SHARE_SINA = @"icon_share_sina";
+NSString *const SG_IMAGE_SHARE_SINA_HIGHLIGHT = @"icon_share_sina_highlight";
+NSString *const SG_IMAGE_SHARE_WECHAT_TIMELINE = @"icon_share_wechat_timeline";
+NSString *const SG_IMAGE_SHARE_WECHAT_TIMELINE_HIGHLIGHT = @"icon_share_wechat_timeline_highlight";
+NSString *const SG_IMAGE_SHARE_COPY = @"icon_share_copy";
+NSString *const SG_IMAGE_SHARE_COPY_HIGHLIGHT = @"icon_share_copy_highlight";
 
 
 

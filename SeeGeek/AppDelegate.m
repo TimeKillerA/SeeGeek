@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "SGLanchViewModel.h"
 #import "SGViewControllerDispatcher.h"
+#import <IQKeyboardManager.h>
 
 @interface AppDelegate ()
 
@@ -58,6 +59,8 @@
     }
 
     // TODO 初始化工具类
+    [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
+    [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
 
     // 打开启动页面
     SGLanchViewModel *viewModel = [[SGLanchViewModel alloc] init];

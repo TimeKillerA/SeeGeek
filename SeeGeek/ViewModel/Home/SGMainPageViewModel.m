@@ -9,6 +9,7 @@
 #import "SGMainPageViewModel.h"
 #import <ReactiveCocoa.h>
 #import "SGStreamSummaryModel.h"
+#import "SGAPIHelper.h"
 
 @interface SGMainPageViewModel ()
 
@@ -29,6 +30,13 @@
     WS(weakSelf);
     return [RACSignal createSignal:^RACDisposable *(id<RACSubscriber> subscriber) {
         [weakSelf buildTestDataAtSection:section more:more];
+        [SGAPIHelper sendRequestForFocusStreamListWithStart:0 count:20 callback:^(BOOL success, id data, NSError *error) {
+            if(success) {
+
+            } else {
+                
+            }
+        }];
         [subscriber sendNext:nil];
         [subscriber sendCompleted];
         return nil;

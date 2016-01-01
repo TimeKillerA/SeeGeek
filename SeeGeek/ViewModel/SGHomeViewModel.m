@@ -12,6 +12,8 @@
 #import "SGMainLocationViewModel.h"
 #import "SGMainFindViewModel.h"
 #import "SGMainUserViewModel.h"
+#import "SGVideoViewModel.h"
+#import "SGViewControllerDispatcher.h"
 
 @interface SGHomeViewModel ()
 
@@ -52,6 +54,11 @@
             break;
     }
     return nil;
+}
+
+- (void)dispatchToVideoPublisher {
+    SGVideoViewModel *viewModel = [[SGVideoViewModel alloc] init];
+    [SGViewControllerDispatcher dispatchToViewControllerWithViewControllerDispatcherDataSource:viewModel];
 }
 
 @end

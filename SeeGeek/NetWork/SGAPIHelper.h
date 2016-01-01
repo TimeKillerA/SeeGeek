@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NSError+Constructor.h"
 
 typedef void(^SGAPICallback)(BOOL success, id data, NSError *error);
 
@@ -18,5 +19,17 @@ typedef void(^SGAPICallback)(BOOL success, id data, NSError *error);
  *  @param callback 回调
  */
 + (void)sendRequestForLaunchAdDataWithCallback:(SGAPICallback)callback;
+
+#pragma mark - stream list
+/**
+ *  获取关注列表
+ *
+ *  @param start    起始位置
+ *  @param count    请求数量
+ *  @param callback
+ */
++ (void)sendRequestForFocusStreamListWithStart:(NSInteger)start
+                                         count:(NSInteger)count
+                                      callback:(SGAPICallback)callback;
 
 @end

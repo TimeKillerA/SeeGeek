@@ -21,3 +21,5 @@ NSString *const BASE_URL_FOR_TEST = @"http://124.126.126.19:8081/seegeek/rest/it
 NSInteger const SG_ERROR_CODE_UNKNOWN = -1;
 
 NSString *const SG_API_METHOD_UPLOAD_VIDEO = @"uploadVideo";
+#pragma mark - stream list
+NSString *const SG_API_METHOD_FOCUS_LIST = @"getCaredItemList";

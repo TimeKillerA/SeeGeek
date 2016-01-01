@@ -19,7 +19,7 @@
 #import "SGResource.h"
 #import "SGSwipNavigationController.h"
 
-@interface SGHomeViewController ()<SGViewControllerDelegate>
+@interface SGHomeViewController ()<SGViewControllerDelegate, RDVTabBarControllerDelegate>
 
 @property (nonatomic, strong)UINavigationController *navigationTab1;
 @property (nonatomic, strong)UINavigationController *navigationTab2;
@@ -49,6 +49,7 @@
 #pragma mark - setup
 - (void)setupListeners {
     [self listenTabbarHidden];
+    self.delegate = self;
 }
 
 - (void)setupTabbar {
@@ -145,6 +146,15 @@
 #pragma mark - SGViewControllerDelegate
 - (void)onViewModelLoaded:(id)viewModel {
     self.viewModel = viewModel;
+}
+
+#pragma mark - RDVTabBarControllerDelegate
+- (BOOL)tabBarController:(RDVTabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+    if(viewController != self.navigationTab3) {
+        return YES;
+    }
+    [self.viewModel dispatchToVideoPublisher];
+    return NO;
 }
 
 #pragma mark - accessory

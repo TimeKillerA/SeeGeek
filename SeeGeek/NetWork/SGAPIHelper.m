@@ -112,7 +112,37 @@ typedef NS_ENUM(NSInteger, SGAPIRequestHttpMethod) {
                                                           callback:callback]];
 }
 
+#pragma mark - stream list
+/**
+ *  获取关注列表
+ *
+ *  @param start    起始位置
+ *  @param count    请求数量
+ *  @param callback
+ */
++ (void)sendRequestForFocusStreamListWithStart:(NSInteger)start
+                                         count:(NSInteger)count
+                                      callback:(SGAPICallback)callback {
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    SGAPIRequest *request = [SGAPIRequest apiRequestWithParams:params HttpMethod:SGAPIRequestHttpMethodGet serverMethod:SG_API_METHOD_FOCUS_LIST callback:callback];
+    [SGAPIHelper sendAPIRequest:request];
+}
+
 #pragma mark - private method
++ (AFHTTPSessionManager *)httpSessionManager {
+    static dispatch_once_t onceToken;
+    static AFHTTPSessionManager *httpSessionManager = nil;
+    dispatch_once(&onceToken, ^{
+        httpSessionManager = [AFHTTPSessionManager manager];
+        httpSessionManager.securityPolicy=[AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+        httpSessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
+        httpSessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
+        [httpSessionManager.requestSerializer setValue:@"application/json;charset=utf-8"forHTTPHeaderField:@"Content-Type"];
+        httpSessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html", nil];
+    });
+    return httpSessionManager;
+}
+
 + (void)sendAPIRequest:(SGAPIRequest *)request {
     if(!request) {
         return;
@@ -122,20 +152,23 @@ typedef NS_ENUM(NSInteger, SGAPIRequestHttpMethod) {
         [SGAPIHelper notifyCompleteWithResponse:[SGAPIResponds apiRespondsWithErrorCode:SG_ERROR_CODE_UNKNOWN message:@""] callback:request.callback];
         return;
     }
+    NSString *apiString = [NSString stringWithFormat:@"%@/%@", request.serverUrl, request.serverMethod];
+    void (^successBlock)(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) = ^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
 
-    NSString *url = [NSString stringWithFormat:@"%@/%@", request.serverUrl, request.serverMethod];
-    NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
-    [urlRequest setValue:@"40" forHTTPHeaderField:@"Content-Length"];
-    [urlRequest setValue:@"132" forHTTPHeaderField:@"Name"];
-    [urlRequest setValue:@"a1234567812345678123456781234568" forHTTPHeaderField:@"Md5"];
-    [urlRequest setValue:@"40" forHTTPHeaderField:@"TotalSize"];
-    [urlRequest setValue:@"application/json; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
-    [urlRequest setHTTPMethod:@"POST"];
-    [urlRequest setHTTPBody:[@"1111111111111111111111111111111111111111" dataUsingEncoding:NSUTF8StringEncoding]];
-    [NSURLConnection sendAsynchronousRequest:urlRequest queue:[[NSOperationQueue alloc]init] completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable connectionError) {
-        
-    }];
+    };
+    void (^failBlock)(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) = ^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
 
+    };
+    switch (request.httpMethod) {
+        case SGAPIRequestHttpMethodPost: {
+            [[SGAPIHelper httpSessionManager] GET:apiString parameters:request.paramsDictionary progress:nil success:successBlock failure:failBlock];
+            break;
+        }
+        case SGAPIRequestHttpMethodGet: {
+            [[SGAPIHelper httpSessionManager] POST:apiString parameters:request.paramsDictionary progress:nil success:successBlock failure:failBlock];
+            break;
+        }
+    }
 }
 
 + (void)notifyCompleteWithResponse:(SGAPIResponds *)responds callback:(SGAPICallback)callback {

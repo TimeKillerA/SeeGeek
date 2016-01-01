@@ -42,6 +42,11 @@
 		88769FAB1C1822F300632722 /* SGHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88769FAA1C1822F300632722 /* SGHomeViewController.m */; };
 		887C81441C252EF900ECF4F1 /* UIImageView+URL.m in Sources */ = {isa = PBXBuildFile; fileRef = 887C81431C252EF900ECF4F1 /* UIImageView+URL.m */; };
 		887C81471C252F4400ECF4F1 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 887C81461C252F4400ECF4F1 /* UIImage+Resize.m */; };
+		8883A1601C365389008624BC /* SGVideoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8883A15F1C365389008624BC /* SGVideoViewController.m */; };
+		8883A1651C367279008624BC /* SGVideoViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8883A1641C367279008624BC /* SGVideoViewModel.m */; };
+		8883A1681C36B246008624BC /* ChatMessageDisplayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8883A1671C36B246008624BC /* ChatMessageDisplayView.m */; };
+		8883A16B1C36C20E008624BC /* SGStreamShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8883A16A1C36C20E008624BC /* SGStreamShareView.m */; };
+		8883A16D1C36CDED008624BC /* thirdpart.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8883A16C1C36CDED008624BC /* thirdpart.xcassets */; };
 		889A48DE1C14072F0016F83D /* SGLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 889A48DD1C14072F0016F83D /* SGLoginViewController.m */; };
 		889A48E51C1408830016F83D /* SGLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 889A48E41C1408830016F83D /* SGLoginViewModel.m */; };
 		889A48EA1C140FDF0016F83D /* SGTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 889A48E91C140FDF0016F83D /* SGTextField.m */; };
@@ -174,6 +179,16 @@
 		887C81431C252EF900ECF4F1 /* UIImageView+URL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+URL.m"; sourceTree = "<group>"; };
 		887C81451C252F4400ECF4F1 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
 		887C81461C252F4400ECF4F1 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		8883A15E1C365388008624BC /* SGVideoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGVideoViewController.h; sourceTree = "<group>"; };
+		8883A15F1C365389008624BC /* SGVideoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGVideoViewController.m; sourceTree = "<group>"; };
+		8883A1621C366D50008624BC /* SGVideoViewModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGVideoViewModelProtocol.h; sourceTree = "<group>"; };
+		8883A1631C367279008624BC /* SGVideoViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGVideoViewModel.h; sourceTree = "<group>"; };
+		8883A1641C367279008624BC /* SGVideoViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGVideoViewModel.m; sourceTree = "<group>"; };
+		8883A1661C36B246008624BC /* ChatMessageDisplayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMessageDisplayView.h; sourceTree = "<group>"; };
+		8883A1671C36B246008624BC /* ChatMessageDisplayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessageDisplayView.m; sourceTree = "<group>"; };
+		8883A1691C36C20E008624BC /* SGStreamShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGStreamShareView.h; sourceTree = "<group>"; };
+		8883A16A1C36C20E008624BC /* SGStreamShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGStreamShareView.m; sourceTree = "<group>"; };
+		8883A16C1C36CDED008624BC /* thirdpart.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = thirdpart.xcassets; sourceTree = "<group>"; };
 		889A48DC1C14072F0016F83D /* SGLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGLoginViewController.h; sourceTree = "<group>"; };
 		889A48DD1C14072F0016F83D /* SGLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGLoginViewController.m; sourceTree = "<group>"; };
 		889A48E31C1408830016F83D /* SGLoginViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGLoginViewModel.h; sourceTree = "<group>"; };
@@ -372,6 +387,7 @@
 				881B2BE71C0C1FB9000EB589 /* Assets.xcassets */,
 				88B7692E1C1C3A7500C52BCB /* image_tab.xcassets */,
 				8817CA891C1D7DB1006CF852 /* app.xcassets */,
+				8883A16C1C36CDED008624BC /* thirdpart.xcassets */,
 				881B2BEC1C0C1FB9000EB589 /* Info.plist */,
 				881B2BDB1C0C1FB8000EB589 /* Supporting Files */,
 			);
@@ -535,6 +551,10 @@
 				8845BFD81C1C99BD00513409 /* Cell */,
 				889A48E81C140FDF0016F83D /* SGTextField.h */,
 				889A48E91C140FDF0016F83D /* SGTextField.m */,
+				8883A1661C36B246008624BC /* ChatMessageDisplayView.h */,
+				8883A1671C36B246008624BC /* ChatMessageDisplayView.m */,
+				8883A1691C36C20E008624BC /* SGStreamShareView.h */,
+				8883A16A1C36C20E008624BC /* SGStreamShareView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -592,6 +612,8 @@
 		881B2C0C1C0C2C8C000EB589 /* Video */ = {
 			isa = PBXGroup;
 			children = (
+				8883A15E1C365388008624BC /* SGVideoViewController.h */,
+				8883A15F1C365389008624BC /* SGVideoViewController.m */,
 			);
 			path = Video;
 			sourceTree = "<group>";
@@ -608,6 +630,7 @@
 		881B2C1C1C0C411B000EB589 /* ViewModelProtocol */ = {
 			isa = PBXGroup;
 			children = (
+				8883A1611C366D33008624BC /* Video */,
 				88BD3C921C2FCB6300F783C2 /* Settings */,
 				881B2C1D1C0C4150000EB589 /* SGLaunchViewModelProtocol.h */,
 				889A48E61C1408BD0016F83D /* SGLoginViewModelProtocol.h */,
@@ -684,6 +707,14 @@
 			path = Common;
 			sourceTree = "<group>";
 		};
+		8883A1611C366D33008624BC /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				8883A1621C366D50008624BC /* SGVideoViewModelProtocol.h */,
+			);
+			path = Video;
+			sourceTree = "<group>";
+		};
 		889A48DF1C14086F0016F83D /* Guide */ = {
 			isa = PBXGroup;
 			children = (
@@ -720,6 +751,8 @@
 		889A48E21C14086F0016F83D /* Video */ = {
 			isa = PBXGroup;
 			children = (
+				8883A1631C367279008624BC /* SGVideoViewModel.h */,
+				8883A1641C367279008624BC /* SGVideoViewModel.m */,
 			);
 			path = Video;
 			sourceTree = "<group>";
@@ -865,6 +898,7 @@
 				881B2BF31C0C1FCE000EB589 /* Podfile in Resources */,
 				889C81A51C0DA244000E863D /* image_resource.bundle in Resources */,
 				8817CA8A1C1D7DB1006CF852 /* app.xcassets in Resources */,
+				8883A16D1C36CDED008624BC /* thirdpart.xcassets in Resources */,
 				88B7692F1C1C3A7500C52BCB /* image_tab.xcassets in Resources */,
 				881B2C051C0C247A000EB589 /* Default-568h@2x.png in Resources */,
 				881B2C071C0C247A000EB589 /* Default@2x.png in Resources */,
@@ -928,6 +962,7 @@
 			files = (
 				882056B81C25A32600BC0A69 /* LocationManager.m in Sources */,
 				8845BFD31C1C880A00513409 /* SGTableDataSource.m in Sources */,
+				8883A1601C365389008624BC /* SGVideoViewController.m in Sources */,
 				88D5CD721C2A853700844135 /* SGCommentModel.m in Sources */,
 				889C81B41C0DA328000E863D /* UIImage+Resource.m in Sources */,
 				8845BFBE1C1C501A00513409 /* SGMainPageViewController.m in Sources */,
@@ -941,6 +976,7 @@
 				881B2C0F1C0C2CB9000EB589 /* SGLaunchViewController.m in Sources */,
 				88BD3C9C1C2FF58600F783C2 /* SGPersonLocationSettingViewController.m in Sources */,
 				882056BB1C25A4A600BC0A69 /* SGMainLocationViewModel.m in Sources */,
+				8883A1651C367279008624BC /* SGVideoViewModel.m in Sources */,
 				88FB380D1C0EBC2F00917778 /* SGStreamConfigration.m in Sources */,
 				88BD3C991C2FE41900F783C2 /* SGSwipNavigationController.m in Sources */,
 				88BD3C8B1C2FC90100F783C2 /* SGPersonnalSettingsViewController.m in Sources */,
@@ -970,6 +1006,7 @@
 				88A239871C268CE90001E5CF /* SGMainFindViewModel.m in Sources */,
 				88C872DE1C30095E007A674D /* SGPersonnalTextChangeViewModel.m in Sources */,
 				882056BF1C25A58F00BC0A69 /* SGVideoLocationModel.m in Sources */,
+				8883A16B1C36C20E008624BC /* SGStreamShareView.m in Sources */,
 				88D5CD601C2A7DD100844135 /* SGMainUserViewModel.m in Sources */,
 				881B2C181C0C3DF4000EB589 /* SGViewControllerDispatcher.m in Sources */,
 				88A2398B1C26BCFF0001E5CF /* NSString+Time.m in Sources */,
@@ -993,6 +1030,7 @@
 				889A48DE1C14072F0016F83D /* SGLoginViewController.m in Sources */,
 				88D5CD661C2A830100844135 /* SGStreamSummaryWithCommentModel.m in Sources */,
 				88D5CD631C2A82BF00844135 /* SGStreamSummaryWithCommentCell.m in Sources */,
+				8883A1681C36B246008624BC /* ChatMessageDisplayView.m in Sources */,
 				88604B511C156EB100391408 /* SGVerifyCodeViewModel.m in Sources */,
 				88FB38161C0EBCA800917778 /* SGCameraDevice.m in Sources */,
 				88BD3CA01C2FF71800F783C2 /* SGPersonLocationSettingViewModel.m in Sources */,

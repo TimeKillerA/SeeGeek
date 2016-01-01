@@ -14,6 +14,9 @@
 
 @end
 
-extern NSInteger const SG_ERROR_CODE_UNKNOWN;
+FOUNDATION_EXTERN NSInteger const SG_ERROR_CODE_UNKNOWN;
 
-extern NSString *const SG_API_METHOD_UPLOAD_VIDEO;
+FOUNDATION_EXTERN NSString *const SG_API_METHOD_UPLOAD_VIDEO;
+
+#pragma mark - stream list
+FOUNDATION_EXTERN NSString *const SG_API_METHOD_FOCUS_LIST;
