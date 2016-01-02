@@ -13,7 +13,7 @@
 
 @protocol SGStreamShareViewDelegate <NSObject>
 
-- (void)streamShareView:(SGStreamShareView *)shareView didShareWithShareType:(SGThirdPartType)type;
+- (void)streamShareView:(SGStreamShareView *)shareView didShareWithShareType:(SGThirdPartType)type message:(NSString *)message;
 
 @end
 
@@ -21,5 +21,8 @@
 
 @property (nonatomic, weak)id<SGStreamShareViewDelegate> delegate;
 @property (nonatomic, strong)SGStreamSummaryModel *summaryModel;
+
+- (void)showInView:(UIView *)view;
+- (void)dismiss;
 
 @end

@@ -76,6 +76,10 @@ NSString *const SG_IMAGE_VIDEO_LIKE = @"icon_video_like";
 NSString *const SG_IMAGE_VIDEO_CHAT_BUTTON = @"icon_video_chat_button";
 NSString *const SG_IMAGE_VIDEO_CHAT_CLOSE_BUTTON = @"icon_video_chat_close_button";
 NSString *const SG_IMAGE_VIDEO_SHARE_BUTTON = @"icon_video_share_button";
+NSString *const SG_IMAGE_SWIP_CAMERA = @"icon_swip_camera";
+NSString *const SG_IMAGE_SWIP_CAMERA_HIGHLIGHT = @"icon_swip_camera_highlight";
+NSString *const SG_IMAGE_LOCK = @"icon_lock";
+NSString *const SG_IMAGE_LOCK_HIGHLIGHT = @"icon_lock_highlight";
 
 #pragma mark - share
 NSString *const SG_IMAGE_SHARE_QQ = @"icon_share_qq";

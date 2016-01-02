@@ -27,6 +27,7 @@ typedef NS_ENUM(NSInteger, SGThirdPartType) {
     SGThirdPartTypeShareWechatTimeline,
     SGThirdPartTypeShareWechatMessage,
     SGThirdPartTypeShareSina,
+    SGThirdPartTypeShareCopy,
 
     // 登录类型
     SGThirdPartTypeLoginQQ,

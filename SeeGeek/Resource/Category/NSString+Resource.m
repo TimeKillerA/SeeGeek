@@ -47,7 +47,21 @@ NSString *const SG_TEXT_WORK_ADDRESS = @"工作地址";
 NSString *const SG_TEXT_REPORT = @"举报";
 NSString *const SG_TEXT_SHARE = @"分享";
 NSString *const SG_TEXT_SHARE_PLACEHOLDER = @"说说分享心得";
-
+NSString *const SG_TEXT_WEIBO = @"微博";
+NSString *const SG_TEXT_QQ = @"QQ";
+NSString *const SG_TEXT_QZONE = @"QQ空间";
+NSString *const SG_TEXT_WECHAT_MESSAGE = @"微信";
+NSString *const SG_TEXT_WECHAT_TIMELINE = @"朋友圈";
+NSString *const SG_TEXT_COPY = @"复制";
+NSString *const SG_TEXT_FOCUS_PERSON = @"关注人物";
+NSString *const SG_TEXT_ADD_TITLE = @"添加标题";
+NSString *const SG_TEXT_ADD_TAG = @"添加标签";
+NSString *const SG_TEXT_TYPE = @"类别";
+NSString *const SG_TEXT_UPLOAD = @"上传";
+NSString *const SG_TEXT_VISIBILITY_RANGE = @"可见范围";
+NSString *const SG_TEXT_INPUT_PASSWORD = @"输入密码";
+NSString *const SG_TEXT_ONLY_FRIENDS_CAN_SEE = @"好友可见";
+NSString *const SG_TEXT_ONLY_FANS_CAN_SEE = @"粉丝可见";
 
 
 

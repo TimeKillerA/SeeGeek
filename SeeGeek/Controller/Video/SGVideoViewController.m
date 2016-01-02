@@ -10,13 +10,21 @@
 #import "SGViewControllerHeader.h"
 #import "SGViewControllerDelegate.h"
 #import "ChatMessageDisplayView.h"
+#import "SGStreamShareView.h"
+#import "SGVideoViewModelProtocol.h"
+#import "SGStreamPersonnalPageView.h"
+#import "SGTextField.h"
+#import <TYAlertView.h>
+#import <UIView+TYAlertView.h>
 
 static CGFloat const TITLE_CONTAINER_MARGIN_TOP = 10;
 static CGFloat const TITLE_HEAD_IMAGE_WIDTH = 30;
 static CGFloat const TITLE_CONTAINER_MARGIN_LEFT = 12;
 
 
-@interface SGVideoViewController ()<SGViewControllerDelegate, UITextViewDelegate>
+@interface SGVideoViewController ()<SGViewControllerDelegate, UITextViewDelegate, SGStreamShareViewDelegate, SGStreamPersonPageViewDelegate>
+
+@property (nonatomic, strong)id<SGVideoViewModelProtocol> viewModel;
 
 /**
  *  视频在此视图中展示
@@ -133,6 +141,42 @@ static CGFloat const TITLE_CONTAINER_MARGIN_LEFT = 12;
  */
 @property (nonatomic, strong)UIButton *shareButton;
 
+#pragma mark - upload property
+/**
+ *  发布视频视图容器
+ */
+@property (nonatomic, strong)UIView *uploadContainer;
+
+/**
+ *  摄像头转换按钮
+ */
+@property (nonatomic, strong)UIButton *swipCameraButton;
+
+/**
+ *  加密按钮
+ */
+@property (nonatomic, strong)UIButton *streamSecurityButton;
+
+/**
+ *  标题输入框
+ */
+@property (nonatomic, strong)SGTextField *inputTitleField;
+
+/**
+ *  标签输入框
+ */
+@property (nonatomic, strong)SGTextField *inputTagField;
+
+/**
+ *  类别输入框
+ */
+@property (nonatomic, strong)SGTextField *inputTypeField;
+
+/**
+ *  发布按钮
+ */
+@property (nonatomic, strong)UIButton *uploadButton;
+
 #pragma mark - property end
 
 @end
@@ -154,7 +198,9 @@ static CGFloat const TITLE_CONTAINER_MARGIN_LEFT = 12;
     [self setupChatContainer];
     [self setupVisitContainer];
     [self setupPublisherContainer];
+    [self setupUploadContainer];
     [self updateConstraints];
+    [self updateVisibility];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -197,12 +243,23 @@ static CGFloat const TITLE_CONTAINER_MARGIN_LEFT = 12;
     [self.publisherContainer addSubview:self.shareButton];
 }
 
+- (void)setupUploadContainer {
+    [self.actionContainerView addSubview:self.uploadContainer];
+    [self.uploadContainer addSubview:self.swipCameraButton];
+    [self.uploadContainer addSubview:self.streamSecurityButton];
+    [self.uploadContainer addSubview:self.inputTitleField];
+    [self.uploadContainer addSubview:self.inputTagField];
+    [self.uploadContainer addSubview:self.inputTypeField];
+    [self.uploadContainer addSubview:self.uploadButton];
+}
+
 - (void)updateConstraints {
     [self updateBackgroundConstraints];
     [self updateTitleContainerConstraints];
     [self updateChatContainerConstraints];
     [self updateVisitContainerConstraints];
     [self updatePublishContainerConstraints];
+    [self updateUploadConstraints];
 }
 
 - (void)updateBackgroundConstraints {
@@ -301,11 +358,58 @@ static CGFloat const TITLE_CONTAINER_MARGIN_LEFT = 12;
     }];
 }
 
+- (void)updateUploadConstraints {
+    [self.uploadContainer mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.bottom.mas_equalTo(self.actionContainerView);
+        make.height.mas_equalTo(150);
+    }];
+    [self.swipCameraButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.uploadContainer).offset(12);
+        make.top.mas_equalTo(self.uploadContainer);
+        make.height.mas_equalTo(self.uploadContainer).multipliedBy(0.2);
+    }];
+    [self.streamSecurityButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.mas_equalTo(self.uploadContainer).offset(-12);
+        make.top.mas_equalTo(self.uploadContainer);
+        make.height.mas_equalTo(self.uploadContainer).multipliedBy(0.2);
+    }];
+    [self.inputTitleField mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.mas_equalTo(self.uploadContainer);
+        make.top.mas_equalTo(self.swipCameraButton.mas_bottom);
+        make.height.mas_equalTo(self.uploadContainer).multipliedBy(0.2);
+    }];
+    [self.inputTagField mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.mas_equalTo(self.uploadContainer);
+        make.top.mas_equalTo(self.inputTitleField.mas_bottom);
+        make.height.mas_equalTo(self.uploadContainer).multipliedBy(0.2);
+    }];
+    [self.inputTypeField mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.mas_equalTo(self.uploadContainer);
+        make.top.mas_equalTo(self.inputTagField.mas_bottom);
+        make.height.mas_equalTo(self.uploadContainer).multipliedBy(0.2);
+    }];
+    [self.uploadButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.mas_equalTo(self.uploadContainer);
+        make.top.mas_equalTo(self.inputTypeField.mas_bottom);
+        make.height.mas_equalTo(self.uploadContainer).multipliedBy(0.2);
+    }];
+}
+
+- (void)updateVisibility {
+    self.publisherContainer.hidden = YES;
+}
+
 #pragma mark - listener setup
 - (void)setupListeners {
     WS(weakSelf);
     [[self.closeButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
         [weakSelf dismissViewControllerAnimated:YES completion:nil];
+    }];
+    [[self.shareButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        [weakSelf showShareView];
+    }];
+    [[self.streamSecurityButton rac_signalForControlEvents:UIControlEventTouchUpInside] subscribeNext:^(id x) {
+        [weakSelf showSecurityDialog];
     }];
 }
 
@@ -316,6 +420,46 @@ static CGFloat const TITLE_CONTAINER_MARGIN_LEFT = 12;
     }
     self.chatTextView.text = nil;
     [self.messageDisplayView addMessage:text userName:text];
+}
+
+- (void)showShareView {
+    SGStreamShareView *shareView = [[SGStreamShareView alloc] init];
+    shareView.delegate = self;
+    [shareView showInView:self.view];
+}
+
+- (void)showPersonPage {
+    SGStreamPersonnalPageView *personPage = [[SGStreamPersonnalPageView alloc] init];
+    personPage.delegate = self;
+    [personPage showInView:self.view];
+}
+
+- (void)showStreamTypeDialog {
+    TYAlertView *alertView = [TYAlertView alertViewWithTitle:[NSString stringForKey:SG_TEXT_TYPE] message:nil];
+    [alertView addAction:[TYAlertAction actionWithTitle:@"突发" style:TYAlertActionStyleDefault handler:^(TYAlertAction *action) {
+
+    }]];
+    [alertView addAction:[TYAlertAction actionWithTitle:@"体育" style:TYAlertActionStyleDefault handler:^(TYAlertAction *action) {
+
+    }]];
+    [alertView addAction:[TYAlertAction actionWithTitle:@"明星" style:TYAlertActionStyleDefault handler:^(TYAlertAction *action) {
+
+    }]];
+    [alertView showInWindowWithBackgoundTapDismissEnable:YES];
+}
+
+- (void)showSecurityDialog {
+    TYAlertView *alertView = [TYAlertView alertViewWithTitle:[NSString stringForKey:SG_TEXT_VISIBILITY_RANGE] message:nil];
+    [alertView addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+        textField.placeholder = [NSString stringForKey:SG_TEXT_INPUT_PASSWORD];
+    }];
+    [alertView addAction:[TYAlertAction actionWithTitle:[NSString stringForKey:SG_TEXT_ONLY_FRIENDS_CAN_SEE] style:TYAlertActionStyleDefault handler:^(TYAlertAction *action) {
+
+    }]];
+    [alertView addAction:[TYAlertAction actionWithTitle:[NSString stringForKey:SG_TEXT_ONLY_FANS_CAN_SEE] style:TYAlertActionStyleDefault handler:^(TYAlertAction *action) {
+
+    }]];
+    [alertView showInWindowWithBackgoundTapDismissEnable:YES];
 }
 
 #pragma mark - SGViewControllerDelegate
@@ -331,6 +475,20 @@ static CGFloat const TITLE_CONTAINER_MARGIN_LEFT = 12;
         return NO;
     }
     return YES;
+}
+
+#pragma mark - SGStreamShareViewDelegate
+- (void)streamShareView:(SGStreamShareView *)shareView didShareWithShareType:(SGThirdPartType)type message:(NSString *)message {
+
+}
+
+#pragma mark - SGStreamPersonPageViewDelegate
+- (void)didFocusPerson {
+
+}
+
+- (void)didFocusLocation {
+
 }
 
 #pragma mark - accessory
@@ -366,6 +524,10 @@ static CGFloat const TITLE_CONTAINER_MARGIN_LEFT = 12;
 - (UIImageView *)headImageView {
     if(!_headImageView) {
         _headImageView = [[UIImageView alloc] init];
+        _headImageView.userInteractionEnabled = YES;
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showPersonPage)];
+        [_headImageView addGestureRecognizer:tap];
+        _headImageView.backgroundColor = [UIColor redColor];
     }
     return _headImageView;
 }
@@ -541,6 +703,94 @@ static CGFloat const TITLE_CONTAINER_MARGIN_LEFT = 12;
     return _messageDisplayView;
 }
 
+- (UIView *)uploadContainer {
+    if(!_uploadContainer) {
+        _uploadContainer = [[UIView alloc] init];
+    }
+    return _uploadContainer;
+}
 
+- (UIButton *)swipCameraButton {
+    if(!_swipCameraButton) {
+        _swipCameraButton = [[UIButton alloc] init];
+        [_swipCameraButton setImage:[UIImage imageForKey:SG_IMAGE_SWIP_CAMERA] forState:UIControlStateNormal];
+        [_swipCameraButton setImage:[UIImage imageForKey:SG_IMAGE_SWIP_CAMERA_HIGHLIGHT] forState:UIControlStateHighlighted];
+    }
+    return _swipCameraButton;
+}
+
+- (UIButton *)streamSecurityButton {
+    if(!_streamSecurityButton) {
+        _streamSecurityButton = [[UIButton alloc] init];
+        [_streamSecurityButton setImage:[UIImage imageForKey:SG_IMAGE_LOCK] forState:UIControlStateNormal];
+        [_streamSecurityButton setImage:[UIImage imageForKey:SG_IMAGE_LOCK_HIGHLIGHT] forState:UIControlStateHighlighted];
+    }
+    return _streamSecurityButton;
+}
+
+- (SGTextField *)inputTitleField {
+    if(!_inputTitleField) {
+        WS(weakSelf);
+        _inputTitleField = [[SGTextField alloc] init];
+        _inputTitleField.placeHolder = [NSString stringForKey:SG_TEXT_ADD_TITLE];
+        _inputTitleField.contentFont = [UIFont fontForKey:SG_FONT_I];
+        _inputTitleField.contentColor = [UIColor colorForFontKey:SG_FONT_I];
+        _inputTitleField.borderSide = FieldBorderSidesBottom;
+        _inputTitleField.borderColor = [UIColor lineColor];
+        _inputTitleField.returnKeyType = UIReturnKeyNext;
+        _inputTitleField.returnKeyBlock = ^() {
+            [weakSelf.inputTagField becomeFirstResponder];
+        };
+        _inputTitleField.editEnable = YES;
+        _inputTitleField.backgroundColor = [UIColor colorForKey:SG_COLOR_SHARE_TITLE_BG];
+    }
+    return _inputTitleField;
+}
+
+- (SGTextField *)inputTagField {
+    if(!_inputTagField) {
+        WS(weakSelf);
+        _inputTagField = [[SGTextField alloc] init];
+        _inputTagField.placeHolder = [NSString stringForKey:SG_TEXT_ADD_TITLE];
+        _inputTagField.contentFont = [UIFont fontForKey:SG_FONT_I];
+        _inputTagField.contentColor = [UIColor colorForFontKey:SG_FONT_I];
+        _inputTagField.borderSide = FieldBorderSidesBottom;
+        _inputTagField.borderColor = [UIColor lineColor];
+        _inputTagField.returnKeyType = UIReturnKeyDone;
+        _inputTagField.returnKeyBlock = ^() {
+            [weakSelf.inputTagField resignFirstResponder];
+        };
+        _inputTagField.editEnable = YES;
+        _inputTagField.backgroundColor = [UIColor colorForKey:SG_COLOR_SHARE_TITLE_BG];
+    }
+    return _inputTagField;
+}
+
+- (SGTextField *)inputTypeField {
+    if(!_inputTypeField) {
+        _inputTypeField = [[SGTextField alloc] init];
+        _inputTypeField.placeHolder = [NSString stringForKey:SG_TEXT_ADD_TITLE];
+        _inputTypeField.contentFont = [UIFont fontForKey:SG_FONT_I];
+        _inputTypeField.contentColor = [UIColor colorForFontKey:SG_FONT_I];
+        _inputTypeField.borderSide = FieldBorderSidesBottom;
+        _inputTypeField.borderColor = [UIColor lineColor];
+        _inputTypeField.backgroundColor = [UIColor colorForKey:SG_COLOR_SHARE_TITLE_BG];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showStreamTypeDialog)];
+        [_inputTypeField addGestureRecognizer:tap];
+
+    }
+    return _inputTypeField;
+}
+
+- (UIButton *)uploadButton {
+    if(!_uploadButton) {
+        _uploadButton = [[UIButton alloc] init];
+        [_uploadButton setTitle:[NSString stringForKey:SG_TEXT_UPLOAD] forState:UIControlStateNormal];
+        [_uploadButton setTitleColor:[UIColor colorForFontKey:SG_FONT_H] forState:UIControlStateNormal];
+        _uploadButton.titleLabel.font = [UIFont fontForKey:SG_FONT_H];
+        _uploadButton.backgroundColor = [UIColor colorForKey:SG_COLOR_SHARE_TITLE_BG];
+    }
+    return _uploadButton;
+}
 
 @end

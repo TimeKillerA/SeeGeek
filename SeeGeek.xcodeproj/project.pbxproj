@@ -51,6 +51,7 @@
 		889A48E51C1408830016F83D /* SGLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 889A48E41C1408830016F83D /* SGLoginViewModel.m */; };
 		889A48EA1C140FDF0016F83D /* SGTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 889A48E91C140FDF0016F83D /* SGTextField.m */; };
 		889A48EE1C143A3F0016F83D /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 889A48ED1C143A3F0016F83D /* UIViewController+HUD.m */; };
+		889B0ED01C37BBDF00C69469 /* SGStreamPersonnalPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 889B0ECF1C37BBDF00C69469 /* SGStreamPersonnalPageView.m */; };
 		889C81981C0D7A82000E863D /* SGAPIConfigration.m in Sources */ = {isa = PBXBuildFile; fileRef = 889C81971C0D7A82000E863D /* SGAPIConfigration.m */; };
 		889C819B1C0D7AA9000E863D /* SGAPIHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 889C819A1C0D7AA9000E863D /* SGAPIHelper.m */; };
 		889C819E1C0D7C3F000E863D /* NSError+Constructor.m in Sources */ = {isa = PBXBuildFile; fileRef = 889C819D1C0D7C3F000E863D /* NSError+Constructor.m */; };
@@ -200,6 +201,8 @@
 		889A48EB1C142C500016F83D /* SGResource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SGResource.h; sourceTree = "<group>"; };
 		889A48EC1C143A3F0016F83D /* UIViewController+HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HUD.h"; sourceTree = "<group>"; };
 		889A48ED1C143A3F0016F83D /* UIViewController+HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HUD.m"; sourceTree = "<group>"; };
+		889B0ECE1C37BBDF00C69469 /* SGStreamPersonnalPageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGStreamPersonnalPageView.h; sourceTree = "<group>"; };
+		889B0ECF1C37BBDF00C69469 /* SGStreamPersonnalPageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGStreamPersonnalPageView.m; sourceTree = "<group>"; };
 		889C81941C0D73CE000E863D /* SGNetworkRequestProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGNetworkRequestProtocol.h; sourceTree = "<group>"; };
 		889C81961C0D7A82000E863D /* SGAPIConfigration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGAPIConfigration.h; sourceTree = "<group>"; };
 		889C81971C0D7A82000E863D /* SGAPIConfigration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGAPIConfigration.m; sourceTree = "<group>"; };
@@ -555,6 +558,8 @@
 				8883A1671C36B246008624BC /* ChatMessageDisplayView.m */,
 				8883A1691C36C20E008624BC /* SGStreamShareView.h */,
 				8883A16A1C36C20E008624BC /* SGStreamShareView.m */,
+				889B0ECE1C37BBDF00C69469 /* SGStreamPersonnalPageView.h */,
+				889B0ECF1C37BBDF00C69469 /* SGStreamPersonnalPageView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1014,6 +1019,7 @@
 				889C81AA1C0DA2B8000E863D /* ResourceManager.m in Sources */,
 				88C872DA1C300846007A674D /* SGPersonnalTextChangeViewController.m in Sources */,
 				889C81981C0D7A82000E863D /* SGAPIConfigration.m in Sources */,
+				889B0ED01C37BBDF00C69469 /* SGStreamPersonnalPageView.m in Sources */,
 				887C81441C252EF900ECF4F1 /* UIImageView+URL.m in Sources */,
 				88FB38201C0EC23900917778 /* SGEncodedFrame.m in Sources */,
 				88BD3C961C2FD2B300F783C2 /* SGPersonnalSettingsCell.m in Sources */,
