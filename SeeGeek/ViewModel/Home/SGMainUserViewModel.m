@@ -183,7 +183,7 @@
 
     SGCommentModel *commentModel1 = [[SGCommentModel alloc] init];
     commentModel1.fromUser = fromUser;
-    commentModel1.content = @"评论内容评论内容评论内容评论内容1111";
+    commentModel1.content = @"评论内容评论内容评论内容评论内容1111评论内容评论内容评论内容评论内容1111评论内容评论内容评论内容评论内容1111评论内容评论内容评论内容评论内容1111评论内容评论内容评论内容评论内容1111评论内容评论内容评论内容评论内容1111评论内容评论内容评论内容评论内容1111评论内容评论内容评论内容评论内容1111评论内容评论内容评论内容评论内容1111评论内容评论内容评论内容评论内容1111";
 
     SGCommentModel *commentModel2 = [[SGCommentModel alloc] init];
     commentModel2.fromUser = fromUser;
@@ -195,8 +195,40 @@
 
     summaryModel.commentList = @[commentModel1, commentModel2, commentModel3];
 
-    self.streamArray = @[summaryModel];
+
+
+    SGStreamSummaryWithCommentModel *summaryModel1 = [[SGStreamSummaryWithCommentModel alloc] init];
+    summaryModel1.commentNumber = 100;
+    summaryModel1.likeNumber = 100;
+    summaryModel1.streamTag = @"#标签#";
+    summaryModel1.location = @"地点";
+    summaryModel1.streamTitle = @"标题";
+    summaryModel1.snapshotUrl = @"";
+
+    SGUserSummaryModel *fromUser1 = [[SGUserSummaryModel alloc] init];
+    fromUser1.userName = @"啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊";
+
+    SGUserSummaryModel *toUser1 = [[SGUserSummaryModel alloc] init];
+    toUser1.userName = @"各位各位";
+
+    SGCommentModel *commentModel4 = [[SGCommentModel alloc] init];
+    commentModel4.fromUser = fromUser1;
+    commentModel4.content = @"评论内容评论内容评论内容评论内容1111";
+
+    SGCommentModel *commentModel5 = [[SGCommentModel alloc] init];
+    commentModel5.fromUser = fromUser1;
+    commentModel5.content = @"评论内容评论内容评论内容评论内容22222";
+
+    SGCommentModel *commentModel6 = [[SGCommentModel alloc] init];
+    commentModel6.fromUser = fromUser1;
+    commentModel6.content = @"评论内容评论内容评论内容评论内容3333333";
+
+    summaryModel1.commentList = @[commentModel4, commentModel5, commentModel6];
+
+    self.streamArray = @[summaryModel, summaryModel1];
 }
+
+
 
 
 @end

@@ -144,7 +144,7 @@ static NSString *const cellIdentifer = @"COMMENT_CELL_IDENTIFER";
 
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.model.commentList count];
+    return [self.model.commentList count] + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -154,6 +154,10 @@ static NSString *const cellIdentifer = @"COMMENT_CELL_IDENTIFER";
 }
 
 - (void)configCell:(SGCommentCell *)cell indexPath:(NSIndexPath *)indexPath {
+    if(indexPath.row >= [self.model.commentList count]) {
+        cell.model = nil;
+        return;
+    }
     SGCommentModel *comment = [self.model.commentList objectAtIndex:indexPath.row];
     cell.model = comment;
 }

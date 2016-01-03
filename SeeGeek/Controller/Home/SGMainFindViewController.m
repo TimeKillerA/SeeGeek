@@ -45,6 +45,7 @@
     [self.containerView addSubview:self.timeDescriptionLabel];
     [self.containerView addSubview:self.timeIntervalLabel];
     [self.view addSubview:self.tableView];
+    [self showNavigationBarWithTitle:[NSString stringForKey:SG_TEXT_FIND] right:nil rightAction:nil left:nil leftAction:nil];
     [self updateConstraints];
     [self.tableView.mj_header beginRefreshing];
 }

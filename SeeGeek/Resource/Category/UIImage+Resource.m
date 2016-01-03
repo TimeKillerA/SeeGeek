@@ -60,6 +60,7 @@ NSString *const SG_IMAGE_UNEXPAND = @"icon_unexpand";
 NSString *const SG_IMAGE_ANNOTATION_CLIP = @"annotation_clip_bg";
 NSString *const SG_IMAGE_ANNOTATION_LIVE = @"annotation_live_bg";
 NSString *const SG_IMAGE_SEARCH = @"icon_search";
+NSString *const SG_IMAGE_EXCHANGE = @"icon_exchange";
 
 #pragma mark - personnal
 NSString *const SG_IMAGE_COLLECTION_STYLE = @"icon_grid_style";
@@ -95,8 +96,11 @@ NSString *const SG_IMAGE_SHARE_WECHAT_TIMELINE_HIGHLIGHT = @"icon_share_wechat_t
 NSString *const SG_IMAGE_SHARE_COPY = @"icon_share_copy";
 NSString *const SG_IMAGE_SHARE_COPY_HIGHLIGHT = @"icon_share_copy_highlight";
 
+#pragma mark - navigation
+NSString *const SG_IMAGE_NAVIGATION_BACK = @"icon_navigation_back";
 
-
+#pragma mark - other
+NSString *const SG_IMAGE_WHITE_SELECT = @"icon_white_select";
 
 
 

@@ -151,7 +151,7 @@
         make.center.mas_equalTo(self);
     }];
     [self.emptyLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.mas_equalTo(self.emptyImageView).offset(25);
+        make.top.mas_equalTo(self.emptyImageView.mas_bottom ).offset(25);
         make.centerX.mas_equalTo(self.emptyImageView);
     }];
 }
@@ -177,7 +177,7 @@
 }
 
 - (void)showEmpty {
-
+    self.emptyLabel.text = [NSString stringForKey:SG_TEXT_NO_SHARE];
 }
 
 - (void)hideViews:(SGStreamType)type {
@@ -230,6 +230,9 @@
 - (UIImageView *)logoImageView {
     if(!_logoImageView) {
         _logoImageView = [[UIImageView alloc] init];
+        _logoImageView.layer.cornerRadius = LOGO_IMAGE_WIDTH/2;
+        _logoImageView.clipsToBounds = YES;
+        _logoImageView.backgroundColor = [UIColor redColor];
     }
     return _logoImageView;
 }

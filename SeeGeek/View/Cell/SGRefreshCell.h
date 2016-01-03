@@ -12,6 +12,7 @@
 
 @property (nonatomic, copy)NSString *title;
 @property (nonatomic, assign)BOOL refreshing;
+@property (nonatomic, assign)BOOL hasMore;
 
 + (CGFloat)cellHeight;
 

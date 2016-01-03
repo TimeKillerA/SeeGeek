@@ -10,6 +10,7 @@
 #import "SGStreamSummaryModel.h"
 #import <ReactiveCocoa.h>
 #import "SGViewControllerDispatcher.h"
+#import "SGVideoViewModel.h"
 
 @interface SGMainFindViewModel ()
 
@@ -30,7 +31,12 @@
 }
 
 - (void)dispatchToNextAtIndex:(NSInteger)index {
-
+    if(index >= [self.currentDataArray count]) {
+        return;
+    }
+    SGStreamSummaryModel *model = [self.currentDataArray objectAtIndex:index];
+    SGVideoViewModel *viewModel = [[SGVideoViewModel alloc] initWithStreamSummaryModel:model];
+    [SGViewControllerDispatcher dispatchToViewControllerWithViewControllerDispatcherDataSource:viewModel];
 }
 
 #pragma mark - SGNetworkRequestProtocol

@@ -12,6 +12,7 @@
 #import "SGViewControllerDispatcher.h"
 #import "SGPersonnalTextChangeViewModel.h"
 #import "SGPersonLocationSettingViewModel.h"
+#import "SGFocusSettingViewModel.h"
 
 @interface SGPersonnalSettingsViewModel ()
 
@@ -53,6 +54,8 @@
         }
         case 3: {
             // 修改关注地理位置
+            SGFocusSettingViewModel *viewModel = [[SGFocusSettingViewModel alloc] initWithFocusType:SGFocusSettingTypeLocation];
+            [SGViewControllerDispatcher dispatchToViewControllerWithViewControllerDispatcherDataSource:viewModel];
             break;
         }
         case 4: {

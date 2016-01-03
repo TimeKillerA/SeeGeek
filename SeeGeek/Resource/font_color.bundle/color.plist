@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>blue_button_bg</key>
+	<string>#28a7e1</string>
 	<key>share_title_bg</key>
 	<string>#eb9f23</string>
 	<key>sg_red</key>

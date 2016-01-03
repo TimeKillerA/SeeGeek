@@ -23,6 +23,7 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if(self) {
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
         [self.contentView addSubview:self.commentLabel];
         [self setConstraints];
     }
@@ -31,8 +32,7 @@
 
 - (void)setConstraints {
     [self.commentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(self.contentView).insets(UIEdgeInsetsMake(15, 0, 15, 0));
-        make.width.mas_equalTo(self.contentView).priorityHigh();
+        make.edges.mas_equalTo(self.contentView).insets(UIEdgeInsetsMake(7, 0, 7, 0));
     }];
 }
 
@@ -61,23 +61,18 @@
         [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor colorForFontKey:SG_FONT_K] range:NSMakeRange(contentOffset, fullContent.length - contentOffset)];
         [attributedString addAttribute:NSFontAttributeName value:[UIFont fontForKey:SG_FONT_K] range:NSMakeRange(contentOffset, fullContent.length - contentOffset)];
         self.commentLabel.attributedText = attributedString;
-        self.commentLabel.text = nil;
     } else {
-        self.commentLabel.text = [NSString stringForKey:SG_TEXT_EXPAND_ALL_COMMENT];
-        self.commentLabel.font = [UIFont fontForKey:SG_FONT_G];
-        self.commentLabel.textColor = [UIColor colorForFontKey:SG_FONT_G];
-        self.commentLabel.attributedText = nil;
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:[NSString stringForKey:SG_TEXT_EXPAND_ALL_COMMENT]];
+        [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor colorForFontKey:SG_FONT_G] range:NSMakeRange(0, attributedString.length)];
+        [attributedString addAttribute:NSFontAttributeName value:[UIFont fontForKey:SG_FONT_G] range:NSMakeRange(0, attributedString.length)];
+        self.commentLabel.attributedText = attributedString;
     }
-    [self.commentLabel mas_updateConstraints:^(MASConstraintMaker *make) {
-        make.height.mas_equalTo(100);
-    }];
 }
 
 - (UILabel *)commentLabel {
     if(!_commentLabel) {
         _commentLabel = [[UILabel alloc] init];
         _commentLabel.numberOfLines = 0;
-        _commentLabel.backgroundColor = [UIColor redColor];
         _commentLabel.preferredMaxLayoutWidth = SCREEN_WIDTH;
     }
     return _commentLabel;

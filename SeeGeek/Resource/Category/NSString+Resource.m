@@ -62,6 +62,12 @@ NSString *const SG_TEXT_VISIBILITY_RANGE = @"可见范围";
 NSString *const SG_TEXT_INPUT_PASSWORD = @"输入密码";
 NSString *const SG_TEXT_ONLY_FRIENDS_CAN_SEE = @"好友可见";
 NSString *const SG_TEXT_ONLY_FANS_CAN_SEE = @"粉丝可见";
+NSString *const SG_TEXT_NO_SHARE = @"暂无分享";
+NSString *const SG_TEXT_MY_FANS = @"我的粉丝";
+NSString *const SG_TEXT_MY_FOCUS = @"我的关注";
+NSString *const SG_TEXT_MORE = @"更多";
+NSString *const SG_TEXT_FOCUSED = @"已关注";
+
 
 
 

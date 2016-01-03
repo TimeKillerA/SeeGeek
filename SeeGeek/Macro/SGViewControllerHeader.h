@@ -13,5 +13,6 @@
 #import <ReactiveCocoa.h>
 #import "SGResource.h"
 #import "UIViewController+HUD.h"
+#import "UIViewController+SGNavigationBar.h"
 
 #endif /* GGViewControllerHeader_h */

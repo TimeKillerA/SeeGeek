@@ -70,6 +70,7 @@ static CGFloat const HEAD_IMAGE_WIDTH = 70;
     [self.emptyView addSubview:self.logoView];
     [self.emptyView addSubview:self.emptyLabel];
     [self.emptyView addSubview:self.recordButton];
+    [self setupNavigationBar];
     [self updateConstraints];
     [self.scrollView.mj_header beginRefreshing];
 }
@@ -79,6 +80,12 @@ static CGFloat const HEAD_IMAGE_WIDTH = 70;
 }
 
 #pragma mark - setup
+- (void)setupNavigationBar {
+    [self showNavigationBarWithTitle:[self.viewModel userName] right:[UIImage imageForKey:SG_IMAGE_SETTINGS] rightAction:^{
+
+    } left:nil leftAction:nil];
+}
+
 - (void)updateConstraints {
     [self.scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(self.view);
@@ -168,7 +175,7 @@ static CGFloat const HEAD_IMAGE_WIDTH = 70;
         self.collectionDataSource.sectionList = @[item];
         [self.collectionView reloadData];
         WS(weakSelf);
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.01 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [weakSelf.collectionView mas_remakeConstraints:^(MASConstraintMaker *make) {
                 make.top.mas_equalTo(weakSelf.actionView.mas_bottom);
                 make.left.right.mas_equalTo(weakSelf.containerView);
@@ -176,9 +183,6 @@ static CGFloat const HEAD_IMAGE_WIDTH = 70;
             }];
             [weakSelf.containerView mas_makeConstraints:^(MASConstraintMaker *make) {
                 make.bottom.mas_equalTo(weakSelf.collectionView).priorityHigh();
-            }];
-            [UIView animateWithDuration:0.1 animations:^{
-                [weakSelf.collectionView layoutIfNeeded];
             }];
         });
     } else {
@@ -206,6 +210,15 @@ static CGFloat const HEAD_IMAGE_WIDTH = 70;
     }] subscribeNext:^(id x) {
         weakSelf.isTableStyle = YES;
         [weakSelf updateCollections];
+    }];
+    [[RACObserve(self, isTableStyle) deliverOnMainThread] subscribeNext:^(id x) {
+        if([x boolValue]) {
+            [weakSelf.tableStyleButton setImage:[UIImage imageForKey:SG_IMAGE_TABLE_STYLE_HIGHLIGHT] forState:UIControlStateNormal];
+            [weakSelf.collectionStyleButton setImage:[UIImage imageForKey:SG_IMAGE_COLLECTION_STYLE] forState:UIControlStateNormal];
+        } else {
+            [weakSelf.tableStyleButton setImage:[UIImage imageForKey:SG_IMAGE_TABLE_STYLE] forState:UIControlStateNormal];
+            [weakSelf.collectionStyleButton setImage:[UIImage imageForKey:SG_IMAGE_COLLECTION_STYLE_HIGHLIGHT] forState:UIControlStateNormal];
+        }
     }];
 }
 
@@ -354,6 +367,9 @@ static CGFloat const HEAD_IMAGE_WIDTH = 70;
 - (UIImageView *)headImageView {
     if(!_headImageView) {
         _headImageView = [[UIImageView alloc] init];
+        _headImageView.layer.cornerRadius = HEAD_IMAGE_WIDTH/2;
+        _headImageView.clipsToBounds = YES;
+        _headImageView.backgroundColor = [UIColor redColor];
     }
     return _headImageView;
 }
@@ -448,6 +464,8 @@ static CGFloat const HEAD_IMAGE_WIDTH = 70;
 - (UICollectionView *)collectionView {
     if(!_collectionView) {
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+        layout.minimumLineSpacing = 0;
+        layout.minimumInteritemSpacing = 0;
         _collectionView = [[UICollectionView alloc] initWithFrame:CGRectZero collectionViewLayout:layout];
         _collectionView.dataSource = self.collectionDataSource;
         _collectionView.delegate = self;

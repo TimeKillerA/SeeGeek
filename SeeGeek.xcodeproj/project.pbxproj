@@ -76,6 +76,10 @@
 		88BD3C991C2FE41900F783C2 /* SGSwipNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BD3C981C2FE41900F783C2 /* SGSwipNavigationController.m */; };
 		88BD3C9C1C2FF58600F783C2 /* SGPersonLocationSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BD3C9B1C2FF58600F783C2 /* SGPersonLocationSettingViewController.m */; };
 		88BD3CA01C2FF71800F783C2 /* SGPersonLocationSettingViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88BD3C9F1C2FF71800F783C2 /* SGPersonLocationSettingViewModel.m */; };
+		88C834651C38FA0D008D2AB8 /* SGFocusSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C834641C38FA0C008D2AB8 /* SGFocusSettingViewController.m */; };
+		88C834691C38FC7D008D2AB8 /* SGFocusSettingViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C834681C38FC7D008D2AB8 /* SGFocusSettingViewModel.m */; };
+		88C8346C1C3907DD008D2AB8 /* SGFocusCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C8346B1C3907DD008D2AB8 /* SGFocusCell.m */; };
+		88C8346F1C3913BA008D2AB8 /* SGFansModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C8346E1C3913BA008D2AB8 /* SGFansModel.m */; };
 		88C872DA1C300846007A674D /* SGPersonnalTextChangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C872D91C300846007A674D /* SGPersonnalTextChangeViewController.m */; };
 		88C872DE1C30095E007A674D /* SGPersonnalTextChangeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88C872DD1C30095E007A674D /* SGPersonnalTextChangeViewModel.m */; };
 		88D5CD601C2A7DD100844135 /* SGMainUserViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88D5CD5F1C2A7DD100844135 /* SGMainUserViewModel.m */; };
@@ -254,6 +258,15 @@
 		88BD3C9D1C2FF61200F783C2 /* SGPersonLocationSettingViewModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPersonLocationSettingViewModelProtocol.h; sourceTree = "<group>"; };
 		88BD3C9E1C2FF71800F783C2 /* SGPersonLocationSettingViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPersonLocationSettingViewModel.h; sourceTree = "<group>"; };
 		88BD3C9F1C2FF71800F783C2 /* SGPersonLocationSettingViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGPersonLocationSettingViewModel.m; sourceTree = "<group>"; };
+		88C834631C38FA0C008D2AB8 /* SGFocusSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGFocusSettingViewController.h; sourceTree = "<group>"; };
+		88C834641C38FA0C008D2AB8 /* SGFocusSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFocusSettingViewController.m; sourceTree = "<group>"; };
+		88C834661C38FA4B008D2AB8 /* SGFocusSettingViewModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGFocusSettingViewModelProtocol.h; sourceTree = "<group>"; };
+		88C834671C38FC7D008D2AB8 /* SGFocusSettingViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGFocusSettingViewModel.h; sourceTree = "<group>"; };
+		88C834681C38FC7D008D2AB8 /* SGFocusSettingViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFocusSettingViewModel.m; sourceTree = "<group>"; };
+		88C8346A1C3907DD008D2AB8 /* SGFocusCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGFocusCell.h; sourceTree = "<group>"; };
+		88C8346B1C3907DD008D2AB8 /* SGFocusCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFocusCell.m; sourceTree = "<group>"; };
+		88C8346D1C3913BA008D2AB8 /* SGFansModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGFansModel.h; sourceTree = "<group>"; };
+		88C8346E1C3913BA008D2AB8 /* SGFansModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGFansModel.m; sourceTree = "<group>"; };
 		88C872D81C300846007A674D /* SGPersonnalTextChangeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPersonnalTextChangeViewController.h; sourceTree = "<group>"; };
 		88C872D91C300846007A674D /* SGPersonnalTextChangeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGPersonnalTextChangeViewController.m; sourceTree = "<group>"; };
 		88C872DB1C300870007A674D /* SGPersonnalTextChangeViewModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGPersonnalTextChangeViewModelProtocol.h; sourceTree = "<group>"; };
@@ -488,6 +501,8 @@
 				88D5CD741C2A85F400844135 /* SGUserSummaryModel.m */,
 				88BD3C8F1C2FCA7A00F783C2 /* SGPersonnalSettingsModel.h */,
 				88BD3C901C2FCA7A00F783C2 /* SGPersonnalSettingsModel.m */,
+				88C8346D1C3913BA008D2AB8 /* SGFansModel.h */,
+				88C8346E1C3913BA008D2AB8 /* SGFansModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -610,6 +625,8 @@
 				88BD3C9B1C2FF58600F783C2 /* SGPersonLocationSettingViewController.m */,
 				88C872D81C300846007A674D /* SGPersonnalTextChangeViewController.h */,
 				88C872D91C300846007A674D /* SGPersonnalTextChangeViewController.m */,
+				88C834631C38FA0C008D2AB8 /* SGFocusSettingViewController.h */,
+				88C834641C38FA0C008D2AB8 /* SGFocusSettingViewController.m */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -699,6 +716,8 @@
 				88D5CD771C2AA03000844135 /* SGStreamSnapCell.m */,
 				88BD3C941C2FD2B300F783C2 /* SGPersonnalSettingsCell.h */,
 				88BD3C951C2FD2B300F783C2 /* SGPersonnalSettingsCell.m */,
+				88C8346A1C3907DD008D2AB8 /* SGFocusCell.h */,
+				88C8346B1C3907DD008D2AB8 /* SGFocusCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -749,6 +768,8 @@
 				88BD3C9F1C2FF71800F783C2 /* SGPersonLocationSettingViewModel.m */,
 				88C872DC1C30095E007A674D /* SGPersonnalTextChangeViewModel.h */,
 				88C872DD1C30095E007A674D /* SGPersonnalTextChangeViewModel.m */,
+				88C834671C38FC7D008D2AB8 /* SGFocusSettingViewModel.h */,
+				88C834681C38FC7D008D2AB8 /* SGFocusSettingViewModel.m */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -801,6 +822,7 @@
 				88BD3C931C2FCB8C00F783C2 /* SGPersonnalSettingsViewModelProtocol.h */,
 				88BD3C9D1C2FF61200F783C2 /* SGPersonLocationSettingViewModelProtocol.h */,
 				88C872DB1C300870007A674D /* SGPersonnalTextChangeViewModelProtocol.h */,
+				88C834661C38FA4B008D2AB8 /* SGFocusSettingViewModelProtocol.h */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -978,6 +1000,7 @@
 				889C81AE1C0DA2FF000E863D /* UIFont+Resource.m in Sources */,
 				8845BFDB1C1C99DE00513409 /* SGStreamSummaryCell.m in Sources */,
 				889C81B11C0DA313000E863D /* UIColor+Resource.m in Sources */,
+				88C834651C38FA0D008D2AB8 /* SGFocusSettingViewController.m in Sources */,
 				881B2C0F1C0C2CB9000EB589 /* SGLaunchViewController.m in Sources */,
 				88BD3C9C1C2FF58600F783C2 /* SGPersonLocationSettingViewController.m in Sources */,
 				882056BB1C25A4A600BC0A69 /* SGMainLocationViewModel.m in Sources */,
@@ -988,6 +1011,7 @@
 				88D5CD781C2AA03000844135 /* SGStreamSnapCell.m in Sources */,
 				881B2BE01C0C1FB9000EB589 /* AppDelegate.m in Sources */,
 				881B2C1B1C0C40E1000EB589 /* SGLanchViewModel.m in Sources */,
+				88C834691C38FC7D008D2AB8 /* SGFocusSettingViewModel.m in Sources */,
 				881B2BDD1C0C1FB8000EB589 /* main.m in Sources */,
 				88FB38231C0ED4C600917778 /* SGVideoRecorder.m in Sources */,
 				88D5CD751C2A85F400844135 /* SGUserSummaryModel.m in Sources */,
@@ -1002,9 +1026,11 @@
 				889C819B1C0D7AA9000E863D /* SGAPIHelper.m in Sources */,
 				88FB38101C0EBC6000917778 /* SGAVEncoder.m in Sources */,
 				88FB38071C0EBC0700917778 /* SGVideoConfigration.m in Sources */,
+				88C8346C1C3907DD008D2AB8 /* SGFocusCell.m in Sources */,
 				88BD3C911C2FCA7A00F783C2 /* SGPersonnalSettingsModel.m in Sources */,
 				889A48EA1C140FDF0016F83D /* SGTextField.m in Sources */,
 				88BD3C8E1C2FC92B00F783C2 /* SGPersonnalSettingsViewModel.m in Sources */,
+				88C8346F1C3913BA008D2AB8 /* SGFansModel.m in Sources */,
 				8817CA901C1D86F5006CF852 /* UIViewController+SGNavigationBar.m in Sources */,
 				8845BFCD1C1C768300513409 /* SGStreamSummaryModel.m in Sources */,
 				88769FAB1C1822F300632722 /* SGHomeViewController.m in Sources */,

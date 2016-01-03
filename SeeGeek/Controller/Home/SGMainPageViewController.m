@@ -36,6 +36,7 @@ static NSInteger const SECTION_HEADER_HEIGHT = 30;
     [super viewDidLoad];
     [self.view addSubview:self.tableView];
     [self updateConstraints];
+    [self showNavigationBarWithTitle:[NSString stringForKey:SG_TEXT_HOME] right:nil rightAction:nil left:nil leftAction:nil];
     [self.tableView.mj_header beginRefreshing];
 }
 
@@ -108,9 +109,9 @@ static NSInteger const SECTION_HEADER_HEIGHT = 30;
             cell = [[SGRefreshCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifer];
         }
         if([array count] >= [self.viewModel totalCountAtSection:indexPath.section]) {
-            cell.title = [NSString stringForKey:SG_TEXT_NO_NEW_CONTENT];
+            cell.hasMore = NO;
         } else {
-            cell.title = [NSString stringForKey:SG_TEXT_EXCHANGE];
+            cell.hasMore = YES;
         }
         return cell;
     }
@@ -200,6 +201,7 @@ static NSInteger const SECTION_HEADER_HEIGHT = 30;
         header.lastUpdatedTimeLabel.hidden = YES;
         _tableView.mj_header = header;
         _tableView.sectionFooterHeight = 0;
+        _tableView.backgroundColor = [UIColor whiteColor];
     }
     return _tableView;
 }

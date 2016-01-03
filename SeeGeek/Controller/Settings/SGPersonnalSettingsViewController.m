@@ -27,6 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.tableView];
+    [self showDefaultNavigationBarWithTitle:[NSString stringForKey:SG_TEXT_PERSONNAL_SETTINGS]];
     [self updateConstraints];
     [self updateTable];
 }
@@ -38,7 +39,7 @@
 #pragma mark - setup
 - (void)updateConstraints {
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(self.view);
+        make.edges.mas_equalTo(self.view).insets(UIEdgeInsetsMake(NAVIGATION_BAR_HEIGHT, 0, 0, 0));
     }];
 }
 
@@ -92,15 +93,15 @@
     }
     SGPersonnalSettingsModel *model = [array objectAtIndex:indexPath.row];
     return [model isKindOfClass:[SGPersonnalSettingsTextModel class]] ? 40 : 100;
-    return 0;
 }
 
 #pragma mark - accessory
 - (UITableView *)tableView {
     if(!_tableView) {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self.dataSource;
+        _tableView.tableFooterView = [[UIView alloc] init];
     }
     return _tableView;
 }

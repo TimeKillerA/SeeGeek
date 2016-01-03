@@ -103,6 +103,7 @@ NSString *const SG_COLOR_NORMAL_GRAY_BG = @"normal_gray_bg";
 NSString *const SG_COLOR_CONTROLLER_GRAY_BG = @"controller_gray_bg";
 NSString *const SG_COLOR_RED_BG = @"sg_red";
 NSString *const SG_COLOR_SHARE_TITLE_BG = @"share_title_bg";
+NSString *const SG_COLOR_BLUE_BUTTON_BG = @"blue_button_bg";
 
 
 

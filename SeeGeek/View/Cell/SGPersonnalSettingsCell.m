@@ -13,6 +13,8 @@
 #import "SGPersonnalSettingsModel.h"
 #import "UIImageView+URL.h"
 
+static CGFloat HEAD_IMAGE_WIDTH = 80;
+
 @interface SGPersonnalSettingsCell ()
 
 @property (nonatomic, strong)SGTextField *textField;
@@ -39,13 +41,14 @@
     }];
     [self.headImageView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.bottom.right.mas_equalTo(self).insets(UIEdgeInsetsMake(10, 0, 10, 20));
-        make.width.mas_equalTo(80);
+        make.width.mas_equalTo(HEAD_IMAGE_WIDTH);
     }];
 }
 
 - (void)setModel:(SGPersonnalSettingsModel *)model {
     _model = model;
     if([model isKindOfClass:[SGPersonnalSettingsImageModel class]]) {
+        self.headImageView.hidden = NO;
         SGPersonnalSettingsImageModel *imageModel = (SGPersonnalSettingsImageModel *)model;
         if(imageModel.image) {
             self.headImageView.image = imageModel.image;
@@ -57,6 +60,7 @@
     SGPersonnalSettingsTextModel *textModel = (SGPersonnalSettingsTextModel *)model;
     self.textField.title = textModel.title;
     self.textField.content = textModel.content;
+    self.headImageView.hidden = YES;
 }
 
 #pragma mark - accessory
@@ -77,6 +81,9 @@
 - (UIImageView *)headImageView {
     if(!_headImageView) {
         _headImageView = [[UIImageView alloc] init];
+        _headImageView.layer.cornerRadius = HEAD_IMAGE_WIDTH/2;
+        _headImageView.clipsToBounds = YES;
+        _headImageView.backgroundColor = [UIColor redColor];
     }
     return _headImageView;
 }

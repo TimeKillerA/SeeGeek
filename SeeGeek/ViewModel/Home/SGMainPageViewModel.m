@@ -10,6 +10,8 @@
 #import <ReactiveCocoa.h>
 #import "SGStreamSummaryModel.h"
 #import "SGAPIHelper.h"
+#import "SGVideoViewModel.h"
+#import "SGViewControllerDispatcher.h"
 
 @interface SGMainPageViewModel ()
 
@@ -52,6 +54,12 @@
     if([valus count] <= index) {
         return;
     }
+    SGStreamSummaryModel *model = [valus objectAtIndex:index];
+    if(model.streamType == SGStreamTypeNone) {
+        return;
+    }
+    SGVideoViewModel *viewModel = [[SGVideoViewModel alloc] initWithStreamSummaryModel:model];
+    [SGViewControllerDispatcher dispatchToViewControllerWithViewControllerDispatcherDataSource:viewModel];
 }
 
 - (void)setExpand:(BOOL)expand atSection:(NSInteger)section {
