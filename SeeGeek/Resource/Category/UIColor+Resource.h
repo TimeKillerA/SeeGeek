@@ -29,6 +29,8 @@
 
 + (instancetype)lineColor;
 
+- (instancetype)alpha:(CGFloat)alpha;
+
 @end
 
 FOUNDATION_EXTERN NSString *const SG_COLOR_WHITE;
@@ -42,6 +44,7 @@ FOUNDATION_EXTERN NSString *const SG_COLOR_CONTROLLER_GRAY_BG;
 FOUNDATION_EXTERN NSString *const SG_COLOR_RED_BG;
 FOUNDATION_EXTERN NSString *const SG_COLOR_SHARE_TITLE_BG;
 FOUNDATION_EXTERN NSString *const SG_COLOR_BLUE_BUTTON_BG;
+FOUNDATION_EXTERN NSString *const SG_COLOR_FIELD_GRAY;
 
 
 

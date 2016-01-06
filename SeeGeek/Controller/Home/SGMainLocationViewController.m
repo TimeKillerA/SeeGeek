@@ -15,6 +15,7 @@
 #import "../../Protocol/ViewModelProtocol/SGMainLocationViewModelProtocol.h"
 #import "SGVideoLocationModel.h"
 #import "SGStreamSummaryLittleSnapCell.h"
+#import "SGMapLocationCell.h"
 
 static CGFloat const CELL_HEADER_HEIGHT = 40;
 static CLLocationDegrees const CENTER_LATITUDE = 21.227640585739891;
@@ -47,13 +48,39 @@ static double const MAP_ZOOM_LEVEL = 3.1;
 
 @end
 
+#pragma mark - simple location annotation
+
+@interface SimpleLocationAnnotation : NSObject<MAAnnotation>
+
+@property (nonatomic, assign) CLLocationCoordinate2D coordinate;
+@property (nonatomic, copy  ) NSString               *title;
+@property (nonatomic, copy  ) NSString               *subtitle;
+@property (nonatomic, strong) UIImage                *image;
+@property (nonatomic, strong) AMapPOI                *poi;
+
+- (id)initWithCoordinate:(CLLocationCoordinate2D)coordinate;
+
+@end
+
+@implementation SimpleLocationAnnotation
+
+- (id)initWithCoordinate:(CLLocationCoordinate2D)coordinate
+{
+    if (self = [super init]){
+        self.coordinate = coordinate;
+    }
+    return self;
+}
+
+@end
+
 #pragma mark - simple annotation view
 
 @interface SimpleAnnotationView : MAAnnotationView
 
-@property (nonatomic, copy)NSString *countTitle;
-@property (nonatomic, strong)UIImage *backgroundImage;
-@property (nonatomic, strong)UIButton *button;
+@property (nonatomic, copy  ) NSString *countTitle;
+@property (nonatomic, strong) UIImage  *backgroundImage;
+@property (nonatomic, strong) UIButton *button;
 
 @end
 
@@ -100,14 +127,17 @@ static double const MAP_ZOOM_LEVEL = 3.1;
 
 #pragma mark SGMainLocationViewController
 
-@interface SGMainLocationViewController ()<SGViewControllerDelegate, MAMapViewDelegate, UITableViewDelegate>
+@interface SGMainLocationViewController ()<SGViewControllerDelegate, MAMapViewDelegate, UITableViewDelegate, AMapSearchDelegate>
 
-@property (nonatomic, strong)MAMapView *mapView;
-@property (nonatomic, strong)SGTextField *textField;
-@property (nonatomic, strong)UITableView *tableView;
-@property (nonatomic, strong)id<SGMainLocationViewModelProtocol> viewModel;
-@property (nonatomic, strong)SGTableDataSource *tableDataSource;
-@property (nonatomic, strong)SGVideoLocationModel *selectLocationModel;
+@property (nonatomic, strong) MAMapView                       *mapView;
+@property (nonatomic, strong) UIView                          *searchContainer;
+@property (nonatomic, strong) SGTextField                     *textField;
+@property (nonatomic, strong) UITableView                     *tableView;
+@property (nonatomic, strong) id<SGMainLocationViewModelProtocol> viewModel;
+@property (nonatomic, strong) SGTableDataSource               *tableDataSource;
+@property (nonatomic, strong) SGVideoLocationModel            *selectLocationModel;
+@property (nonatomic, strong) AMapSearchAPI                   *searchAPI;
+@property (nonatomic, strong) NSArray                         *pois;
 
 @end
 
@@ -115,7 +145,9 @@ static double const MAP_ZOOM_LEVEL = 3.1;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupListeners];
     [self.view addSubview:self.mapView];
+    [self.view addSubview:self.searchContainer];
     [self.view addSubview:self.textField];
     [self.view addSubview:self.tableView];
     [self updateConstraints];
@@ -136,8 +168,14 @@ static double const MAP_ZOOM_LEVEL = 3.1;
     [self.mapView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.edges.mas_equalTo(self.view);
     }];
+    [self.searchContainer mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.mas_equalTo(self.view);
+        make.top.mas_equalTo(self.view);
+        make.height.mas_equalTo(45 + STATUS_BAR_HEIGHT);
+    }];
     [self.textField mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.right.top.mas_equalTo(self.view).insets(UIEdgeInsetsMake(10, 12, 0, 12));
+        make.left.right.mas_equalTo(self.searchContainer).insets(UIEdgeInsetsMake(0, 12, 0, 12));
+        make.top.mas_equalTo(self.searchContainer).offset(STATUS_BAR_HEIGHT + 8);
         make.height.mas_equalTo(28);
     }];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -147,6 +185,8 @@ static double const MAP_ZOOM_LEVEL = 3.1;
 }
 
 - (void)showStreamLocations {
+    self.pois = nil;
+    [self.mapView removeAnnotations:[self.mapView annotations]];
     for(SGVideoLocationModel *model in [self.viewModel streamLocationArray]) {
         SimpleAnnotation *annotation = [[SimpleAnnotation alloc] initWithCoordinate:CLLocationCoordinate2DMake(model.lantitude, model.longitude)];
         annotation.title = [NSString stringWithFormat:@"%d", (int)model.count];
@@ -169,16 +209,43 @@ static double const MAP_ZOOM_LEVEL = 3.1;
     }
 }
 
-- (void)showStreamSummaryTable:(SGVideoLocationModel *)model {
-    if(self.selectLocationModel == model) {
-        return;
+- (void)showPOILocations:(NSArray *)pois {
+    self.selectLocationModel = nil;
+    [self.mapView removeAnnotations:[self.mapView annotations]];
+    NSInteger count = [pois count];
+    for (int i = 0; i < count; i++) {
+        AMapPOI *poi  = [pois objectAtIndex:i];
+        SimpleLocationAnnotation *annotation = [[SimpleLocationAnnotation alloc] initWithCoordinate:CLLocationCoordinate2DMake(poi.location.latitude, poi.location.longitude)];
+        annotation.title = [NSString stringWithFormat:@"%d", (int)(i+1)];
+        annotation.image = [UIImage imageForKey:SG_IMAGE_LOCATION_RED];
+        annotation.poi = poi;
+        [self.mapView addAnnotation:annotation];
     }
-    self.selectLocationModel = model;
+    [self showTableView];
+}
+
+- (void)showTableView {
     self.tableView.hidden = NO;
-    NSArray *dataArray = [self.viewModel streamSummaryArrayForLocation:model];
-    SGTableDataSourceSectionItem *item = [[SGTableDataSourceSectionItem alloc] initWithItemCount:[dataArray count]];
-    self.tableDataSource.sectionList = @[item];
+    if(self.selectLocationModel) {
+        NSArray *dataArray = [self.viewModel streamSummaryArrayForLocation:self.selectLocationModel];
+        SGTableDataSourceSectionItem *item = [[SGTableDataSourceSectionItem alloc] initWithItemCount:[dataArray count]];
+        self.tableDataSource.sectionList = @[item];
+    } else {
+        SGTableDataSourceSectionItem *item = [[SGTableDataSourceSectionItem alloc] initWithItemCount:[self.pois count]];
+        self.tableDataSource.sectionList = @[item];
+    }
     [self.tableView reloadData];
+}
+
+- (void)setupListeners {
+    WS(weakSelf);
+    [[RACObserve(self.textField, content) deliverOnMainThread] subscribeNext:^(NSString *x) {
+        if(x.length == 0) {
+            [weakSelf loadLocations];
+        } else {
+            [weakSelf POISearchWithKeyword:x];
+        }
+    }];
 }
 
 #pragma mark - SGViewControllerDelegate
@@ -188,34 +255,79 @@ static double const MAP_ZOOM_LEVEL = 3.1;
 
 #pragma mark - MAMapViewDelegate
 - (void)mapView:(MAMapView *)mapView didSingleTappedAtCoordinate:(CLLocationCoordinate2D)coordinate {
-    self.selectLocationModel = nil;
-    self.tableView.hidden = YES;
+    if(self.selectLocationModel) {
+        self.selectLocationModel = nil;
+        self.tableView.hidden = YES;
+    }
 }
 
 - (MAAnnotationView*)mapView:(MAMapView *)mapView viewForAnnotation:(id <MAAnnotation>)annotation {
-    if(![annotation isKindOfClass:[SimpleAnnotation class]]) {
-        return nil;
+    if([annotation isKindOfClass:[SimpleAnnotation class]]) {
+        static NSString *identifer = @"customReuseIndetifier";
+        SimpleAnnotationView *annotationView = (SimpleAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:identifer];
+        if(!annotationView) {
+            annotationView = [[SimpleAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifer];
+            annotationView.frame = CGRectMake(0, 0, 25, 25);
+        }
+        SimpleAnnotation *simpleAnnotation = annotation;
+        annotationView.countTitle = simpleAnnotation.title;
+        annotationView.backgroundImage = simpleAnnotation.image;
+        return annotationView;
+    } else if([annotation isKindOfClass:[SimpleLocationAnnotation class]]) {
+        static NSString *identifer = @"poiReuseIndetifier";
+        SimpleAnnotationView *annotationView = (SimpleAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:identifer];
+        if(!annotationView) {
+            annotationView = [[SimpleAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifer];
+            annotationView.frame = CGRectMake(0, 0, 17, 23);
+        }
+        SimpleLocationAnnotation *simpleAnnotation = annotation;
+        annotationView.countTitle = simpleAnnotation.title;
+        annotationView.backgroundImage = simpleAnnotation.image;
+        return annotationView;
     }
-    static NSString *identifer = @"customReuseIndetifier";
-    SimpleAnnotationView *annotationView = (SimpleAnnotationView*)[mapView dequeueReusableAnnotationViewWithIdentifier:identifer];
-    if(!annotationView) {
-        annotationView = [[SimpleAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifer];
-        annotationView.frame = CGRectMake(0, 0, 30, 30);
-    }
-    SimpleAnnotation *simpleAnnotation = annotation;
-    annotationView.countTitle = simpleAnnotation.title;
-    annotationView.backgroundImage = simpleAnnotation.image;
-    return annotationView;
+    return nil;
 }
 
 - (void)mapView:(MAMapView *)mapView didSelectAnnotationView:(MAAnnotationView *)view {
-    SimpleAnnotation *annotation = view.annotation;
-    SGVideoLocationModel *model = annotation.model;
-    [self loadSummary:model more:NO];
+    id annotation = view.annotation;
+    if([annotation isKindOfClass:[SimpleAnnotation class]]) {
+        SGVideoLocationModel *model = ((SimpleAnnotation *)annotation).model;
+        self.selectLocationModel = model;
+        [self loadSummary:model more:NO];
+    } else if([annotation isKindOfClass:[SimpleLocationAnnotation class]]) {
+
+    }
+}
+
+#pragma mark - AMapSearchDelegate
+- (void)AMapSearchRequest:(id)request didFailWithError:(NSError *)error {
+    
+}
+
+- (void)onPOISearchDone:(AMapPOISearchBaseRequest *)request response:(AMapPOISearchResponse *)response {
+    self.pois = response.pois;
+    [self showPOILocations:response.pois];
 }
 
 #pragma mark - UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    if(self.selectLocationModel == nil) {
+        return 0;
+    }
+    return CELL_HEADER_HEIGHT;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(self.selectLocationModel == nil) {
+        return [SGMapLocationCell cellHeight];
+    }
+    return [SGStreamSummaryLittleSnapCell cellHeight];
+}
+
 - (nullable UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    if(self.selectLocationModel == nil) {
+        return nil;
+    }
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, CELL_HEADER_HEIGHT)];
 
     UILabel *label = [[UILabel alloc] init];
@@ -248,12 +360,24 @@ static double const MAP_ZOOM_LEVEL = 3.1;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 #pragma mark - config cell
 - (UITableViewCell *)tableview:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(self.selectLocationModel == nil) {
+        static NSString *cellIdentifer = @"location_map_cell";
+        SGMapLocationCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifer];
+        if(!cell) {
+            cell = [[SGMapLocationCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifer];
+        }
+        if(indexPath.row < [self.pois count]) {
+            AMapPOI *poi = [self.pois objectAtIndex:indexPath.row];
+            [cell updateWithTitle:poi.name content:poi.address index:indexPath.row];
+        }
+        return cell;
+    }
     static NSString *cellIdentifer = @"location_summary_cell";
     SGStreamSummaryLittleSnapCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifer];
     if(!cell) {
@@ -280,14 +404,13 @@ static double const MAP_ZOOM_LEVEL = 3.1;
 
 - (void)loadSummary:(SGVideoLocationModel *)model more:(BOOL)more {
     WS(weakSelf);
-    __weak typeof(model) weakModel = model;
     [self showDefaultProgressHUD];
     [[[self.viewModel signalForLoadStreamDataWithLocation:model more:more] deliverOnMainThread] subscribeNext:^(id x) {
         [weakSelf dismissHUD];
     } error:^(NSError *error) {
         [weakSelf showDefaultTextHUD:[error localizedDescription]];
     } completed:^{
-        [weakSelf showStreamSummaryTable:weakModel];
+        [weakSelf showTableView];
     }];
 }
 
@@ -303,20 +426,55 @@ static double const MAP_ZOOM_LEVEL = 3.1;
     }];
 }
 
+- (void)POISearchWithKeyword:(NSString *)keyword {
+    NSString *finalKeyword = [keyword stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    if(finalKeyword.length == 0) {
+        return;
+    }
+    AMapPOIKeywordsSearchRequest *request = [[AMapPOIKeywordsSearchRequest alloc] init];
+    NSString *requestString = [finalKeyword stringByReplacingOccurrencesOfString:@" " withString:@"|"];
+    request.keywords = requestString;
+    request.types = @"餐饮服务|购物服务|生活服务|风景名胜|商务住宅|地名地址信息|公共设施";
+    [self.searchAPI AMapPOIKeywordsSearch:request];
+}
+
 #pragma mark - accessory
 - (MAMapView *)mapView {
     if(!_mapView) {
         _mapView = [[MAMapView alloc] init];
         _mapView.delegate = self;
         [_mapView setCenterCoordinate:CLLocationCoordinate2DMake(CENTER_LATITUDE, CENTER_LONGITUDE)];
-        _mapView.zoomEnabled = NO;
     }
     return _mapView;
+}
+
+- (UIView *)searchContainer {
+    if(!_searchContainer) {
+        _searchContainer = [[UIView alloc] init];
+        _searchContainer.backgroundColor = [[UIColor colorForKey:SG_COLOR_FIELD_GRAY] alpha:0.5];
+    }
+    return _searchContainer;
 }
 
 - (SGTextField *)textField {
     if(!_textField) {
         _textField = [[SGTextField alloc] init];
+        _textField.placeHolder = [NSString stringForKey:SG_TEXT_INPUT_SEARCH_CONTENT];
+        _textField.rightImage = [UIImage imageForKey:SG_IMAGE_SEARCH];
+        _textField.editEnable = YES;
+        _textField.contentFont = [UIFont fontForKey:SG_FONT_M];
+        _textField.contentColor = [UIColor colorForFontKey:SG_FONT_M];
+        _textField.returnKeyType = UIReturnKeyDone;
+        _textField.clearMode = UITextFieldViewModeNever;
+        _textField.fillColor = [UIColor colorForKey:SG_COLOR_FIELD_GRAY];
+        _textField.borderWidth = _1_PX;
+        _textField.borderColor = [UIColor colorForKey:SG_COLOR_FIELD_GRAY];
+        _textField.cornerRadius = 5;
+        _textField.insets = UIEdgeInsetsMake(0, 10, 0, 10);
+        __weak typeof(_textField) weakFiled = _textField;
+        _textField.returnKeyBlock = ^() {
+            [weakFiled resignFirstResponder];
+        };
     }
     return _textField;
 }
@@ -327,8 +485,6 @@ static double const MAP_ZOOM_LEVEL = 3.1;
         _tableView.delegate = self;
         _tableView.dataSource = self.tableDataSource;
         _tableView.hidden = YES;
-        _tableView.rowHeight = [SGStreamSummaryLittleSnapCell cellHeight];
-        _tableView.sectionHeaderHeight = CELL_HEADER_HEIGHT;
     }
     return _tableView;
 }
@@ -341,6 +497,14 @@ static double const MAP_ZOOM_LEVEL = 3.1;
         }];
     }
     return _tableDataSource;
+}
+
+- (AMapSearchAPI *)searchAPI {
+    if(!_searchAPI) {
+        _searchAPI = [[AMapSearchAPI alloc] init];
+        _searchAPI.delegate = self;
+    }
+    return _searchAPI;
 }
 
 @end

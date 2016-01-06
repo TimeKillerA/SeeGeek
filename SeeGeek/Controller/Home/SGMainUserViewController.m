@@ -352,7 +352,7 @@ static CGFloat const HEAD_IMAGE_WIDTH = 70;
             [weakSelf loadStreamData:YES];
         }];
         _scrollView.mj_header = header;
-        _scrollView.mj_footer = footer;
+//        _scrollView.mj_footer = footer;
     }
     return _scrollView;
 }

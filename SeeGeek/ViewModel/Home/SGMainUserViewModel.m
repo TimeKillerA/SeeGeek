@@ -225,7 +225,7 @@
 
     summaryModel1.commentList = @[commentModel4, commentModel5, commentModel6];
 
-    self.streamArray = @[summaryModel, summaryModel1];
+    self.streamArray = @[summaryModel];
 }
 
 

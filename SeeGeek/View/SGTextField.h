@@ -86,6 +86,11 @@ typedef NS_OPTIONS(NSInteger, FieldBorderSide) {
 @property (nonatomic, assign) FieldBorderSide           borderSide;
 
 /**
+ *  圆角半径
+ */
+@property (nonatomic, assign) CGFloat                   cornerRadius;
+
+/**
  *  边框颜色，默认0xfff
  */
 @property (nonatomic, strong) UIColor                   *borderColor;
@@ -116,6 +121,11 @@ typedef NS_OPTIONS(NSInteger, FieldBorderSide) {
 @property (nonatomic, assign) UIEdgeInsets              insets;
 @property (nonatomic, strong) NSAttributedString        *placeHolderAttributedString;
 @property (nonatomic, copy  ) SGTextFieldReturnKeyBlock returnKeyBlock;
+
+/**
+ *  填充色
+ */
+@property (nonnull, strong  ) UIColor                   *fillColor;
 
 - (void)resignFirstResponder;
 - (void)becomeFirstResponder;

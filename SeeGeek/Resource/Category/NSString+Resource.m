@@ -67,6 +67,7 @@ NSString *const SG_TEXT_MY_FANS = @"我的粉丝";
 NSString *const SG_TEXT_MY_FOCUS = @"我的关注";
 NSString *const SG_TEXT_MORE = @"更多";
 NSString *const SG_TEXT_FOCUSED = @"已关注";
+NSString *const SG_TEXT_INPUT_SEARCH_CONTENT = @"输入搜索内容";
 
 
 

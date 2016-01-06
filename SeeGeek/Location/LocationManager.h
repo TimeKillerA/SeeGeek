@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <MAMapKit/MAMapKit.h>
+#import <AMapSearchKit/AMapSearchKit.h>
 
 @interface LocationManager : NSObject
 

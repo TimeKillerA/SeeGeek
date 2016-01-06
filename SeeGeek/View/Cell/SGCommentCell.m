@@ -32,7 +32,7 @@
 
 - (void)setConstraints {
     [self.commentLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.edges.mas_equalTo(self.contentView).insets(UIEdgeInsetsMake(7, 0, 7, 0));
+        make.edges.mas_equalTo(self.contentView).insets(UIEdgeInsetsMake(7, 7, 7, 7)).priorityHigh();
     }];
 }
 

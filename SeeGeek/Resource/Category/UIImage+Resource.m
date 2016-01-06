@@ -101,6 +101,7 @@ NSString *const SG_IMAGE_NAVIGATION_BACK = @"icon_navigation_back";
 
 #pragma mark - other
 NSString *const SG_IMAGE_WHITE_SELECT = @"icon_white_select";
+NSString *const SG_IMAGE_LOCATION_RED = @"icon_location_red";
 
 
 

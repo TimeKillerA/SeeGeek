@@ -20,5 +20,6 @@
 #define STATUS_BAR_HEIGHT 20
 #define TAB_BAR_HEIGHT 49
 #define SCREEN_SCALE ([UIScreen mainScreen].bounds.size.width/320.0)
+#define _1_PX (1/[UIScreen mainScreen].scale)
 
 #endif /* SGResource_h */

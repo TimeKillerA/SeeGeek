@@ -66,6 +66,7 @@
 		88A239871C268CE90001E5CF /* SGMainFindViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A239861C268CE90001E5CF /* SGMainFindViewModel.m */; };
 		88A2398B1C26BCFF0001E5CF /* NSString+Time.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A2398A1C26BCFF0001E5CF /* NSString+Time.m */; };
 		88A2398E1C26C6DB0001E5CF /* SGCollectionViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 88A2398D1C26C6DB0001E5CF /* SGCollectionViewDataSource.m */; };
+		88AC68111C3D126C00746233 /* SGMapLocationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 88AC68101C3D126C00746233 /* SGMapLocationCell.m */; };
 		88B769241C1BEE4C00C52BCB /* SGHomeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B769231C1BEE4C00C52BCB /* SGHomeViewModel.m */; };
 		88B7692B1C1BF45E00C52BCB /* ParameterUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 88B7692A1C1BF45E00C52BCB /* ParameterUtil.m */; };
 		88B7692F1C1C3A7500C52BCB /* image_tab.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88B7692E1C1C3A7500C52BCB /* image_tab.xcassets */; };
@@ -248,6 +249,8 @@
 		88A2398A1C26BCFF0001E5CF /* NSString+Time.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Time.m"; sourceTree = "<group>"; };
 		88A2398C1C26C6DB0001E5CF /* SGCollectionViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGCollectionViewDataSource.h; sourceTree = "<group>"; };
 		88A2398D1C26C6DB0001E5CF /* SGCollectionViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGCollectionViewDataSource.m; sourceTree = "<group>"; };
+		88AC680F1C3D126C00746233 /* SGMapLocationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGMapLocationCell.h; sourceTree = "<group>"; };
+		88AC68101C3D126C00746233 /* SGMapLocationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGMapLocationCell.m; sourceTree = "<group>"; };
 		88B769211C1BED6200C52BCB /* SGHomeViewModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGHomeViewModelProtocol.h; sourceTree = "<group>"; };
 		88B769221C1BEE4C00C52BCB /* SGHomeViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGHomeViewModel.h; sourceTree = "<group>"; };
 		88B769231C1BEE4C00C52BCB /* SGHomeViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGHomeViewModel.m; sourceTree = "<group>"; };
@@ -767,6 +770,8 @@
 				88BD3C951C2FD2B300F783C2 /* SGPersonnalSettingsCell.m */,
 				88C8346A1C3907DD008D2AB8 /* SGFocusCell.h */,
 				88C8346B1C3907DD008D2AB8 /* SGFocusCell.m */,
+				88AC680F1C3D126C00746233 /* SGMapLocationCell.h */,
+				88AC68101C3D126C00746233 /* SGMapLocationCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1077,6 +1082,7 @@
 				88FB38071C0EBC0700917778 /* SGVideoConfigration.m in Sources */,
 				88C8346C1C3907DD008D2AB8 /* SGFocusCell.m in Sources */,
 				88BD3C911C2FCA7A00F783C2 /* SGPersonnalSettingsModel.m in Sources */,
+				88AC68111C3D126C00746233 /* SGMapLocationCell.m in Sources */,
 				889A48EA1C140FDF0016F83D /* SGTextField.m in Sources */,
 				88BD3C8E1C2FC92B00F783C2 /* SGPersonnalSettingsViewModel.m in Sources */,
 				88C8346F1C3913BA008D2AB8 /* SGFansModel.m in Sources */,

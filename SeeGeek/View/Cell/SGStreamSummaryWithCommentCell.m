@@ -13,6 +13,7 @@
 #import "UIImageView+URL.h"
 #import <UITableView+FDTemplateLayoutCell.h>
 #import "SGCommentCell.h"
+#import <ReactiveCocoa.h>
 
 #define IMAGE_WIDTH SCREEN_WIDTH
 #define IMAGE_HEIGHT 225*SCREEN_SCALE
@@ -170,9 +171,10 @@ static NSString *const cellIdentifer = @"COMMENT_CELL_IDENTIFER";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     WS(weakSelf);
-    return [tableView fd_heightForCellWithIdentifier:cellIdentifer cacheByIndexPath:indexPath configuration:^(id cell) {
+    CGFloat height = [tableView fd_heightForCellWithIdentifier:cellIdentifer cacheByIndexPath:indexPath configuration:^(id cell) {
         [weakSelf configCell:cell indexPath:indexPath];
     }];
+    return height;
 }
 
 #pragma mark - accessory
@@ -248,7 +250,7 @@ static NSString *const cellIdentifer = @"COMMENT_CELL_IDENTIFER";
 
 - (UITableView *)commentTableView {
     if(!_commentTableView) {
-        _commentTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+        _commentTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 0) style:UITableViewStylePlain];
         _commentTableView.delegate = self;
         _commentTableView.dataSource = self;
         [_commentTableView registerClass:[SGCommentCell class] forCellReuseIdentifier:cellIdentifer];

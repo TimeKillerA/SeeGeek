@@ -105,9 +105,11 @@
     }];
     [[[RACObserve(self, rightImage) deliverOnMainThread] distinctUntilChanged]  subscribeNext:^(id x) {
         weakSelf.rightImageView.image = x;
-        [weakSelf.rightImageView mas_updateConstraints:^(MASConstraintMaker *make) {
+        [weakSelf.rightImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.width.mas_equalTo(weakSelf.rightImage.size.width);
+            make.centerY.mas_equalTo(self.tkRoundView);
             make.height.mas_equalTo(weakSelf.rightImage.size.height);
+            make.right.mas_equalTo(weakSelf.tkRoundView).offset(x?-weakSelf.insets.right:0);
         }];
     }];
     [[[RACObserve(self, editEnable) deliverOnMainThread] distinctUntilChanged]  subscribeNext:^(id x) {
@@ -150,6 +152,9 @@
     [[[RACObserve(self, borderWidth) deliverOnMainThread] distinctUntilChanged] subscribeNext:^(id x) {
         weakSelf.tkRoundView.borderWidth = [x floatValue];
     }];
+    [[[RACObserve(self, cornerRadius) deliverOnMainThread] distinctUntilChanged] subscribeNext:^(id x) {
+        weakSelf.tkRoundView.cornerRadius = [x floatValue];
+    }];
     [[[RACObserve(self, returnKeyType) deliverOnMainThread] distinctUntilChanged]  subscribeNext:^(id x) {
         weakSelf.textField.returnKeyType = [x integerValue];
     }];
@@ -162,7 +167,7 @@
     [[[RACObserve(self, placeHolderAttributedString) deliverOnMainThread] distinctUntilChanged]  subscribeNext:^(id x) {
         weakSelf.textField.attributedPlaceholder = x;
     }];
-    [[[[RACObserve(self, backgroundColor) deliverOnMainThread] distinctUntilChanged] filter:^BOOL(id value) {
+    [[[[RACObserve(self, fillColor) deliverOnMainThread] distinctUntilChanged] filter:^BOOL(id value) {
         return value;
     }] subscribeNext:^(id x) {
         weakSelf.tkRoundView.fillColor = x;
@@ -229,7 +234,7 @@
         make.top.bottom.mas_equalTo(self);
         make.right.mas_equalTo(self.rightImageView.mas_left).offset(rightOffset);
     }];
-    [self.rightImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.rightImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
         CGFloat offset = self.rightImage ? self.insets.right : 0;
         make.right.mas_equalTo(self.tkRoundView).offset(-offset);
         make.centerY.mas_equalTo(self.tkRoundView);
@@ -244,7 +249,6 @@
     if(!_tkRoundView)
     {
         _tkRoundView = [[TKRoundedView alloc] init];
-        _tkRoundView.roundedCorners = TKRoundedCornerNone;
     }
     return _tkRoundView;
 }
